@@ -6,7 +6,8 @@ html, body {
 	background: url('imgs/event.png') no-repeat center center fixed;
   	background-size: cover;
   	color: #00BC58;
-}
+	margin-top: 10px;
+ }
 
 .logo {
 	margin: 0;
@@ -22,6 +23,17 @@ html, body {
     color: #ff8d00;
     font-family: 'Oswald';
     font-size: 20px;
+    border:none;
+	display: block;
+	margin:10px auto;
+}
+
+label {
+    border-radius:6px;
+    color: #00BC58;
+    font-family: 'Oswald';
+    font-size: 20px;
+    font-weight: bold;
     border:none;
 	display: block;
 	margin:10px auto;
@@ -69,4 +81,17 @@ a:hover {
 }
 *:-ms-input-placeholder {
     color: #ff8d00;
+}
+
+#submit {
+	background-color: white;
+    border-radius:10px;
+    color: #ff8d00;
+    font-family: 'Oswald';
+    font-size: 20px;
+    border:none;
+	display: block;
+	margin:10px auto;
+	margin-top: 20px;
+	width: 150px;
 }
