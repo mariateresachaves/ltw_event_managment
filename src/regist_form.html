@@ -1,38 +1,56 @@
 <!DOCTYPE html>
 <html>
-  <header>
-    <title>Register</title>
-    <link rel="stylesheet" href="style2.css">
-  </header>
 
-  <body>
-    <div id="container">
-      <div class="logo">
-        <img src="imgs/icon.png" width=5% heigth=5%>
-        <h1>Event Management</h1>
-      </div>
-      <form action="PHP/users.php" method="post">
-        <div id="form">
-		  <label>Username:<br></label>
-		  <input type="name" name="username" placeholder="Pick an username you like!">
-          <label>Name:<br></label>
-          <input type="name" name="name" placeholder="First and last name.">
-          <label><br>E-mail:<br></label>
-          <input type="email" name="email" placeholder="E-mail address">
-          <label><br>Password:<br></label>
-          <input type="password" name="password" placeholder="Pick a strong password!">
-          <label><br>Birth Date:<br></label>
-          <input type="date" name="date">
-          <label><br>Sex:<br></label>
+    <header>
+        <title>Register</title>
+        <link rel="stylesheet" href="style2.css">
+    </header>
+
+    <body>
+        
+        <div class="menu">
+            <div id ="left">
+                <div id="logo">
+                    <img src="imgs/icon.png">
+                </div>
+                <div id="title">
+                    <h2>Event Management</h2>
+                </div>
+            </div>
         </div>
-        <div id="sex">
-          <input type="radio" name="sex" value="Male"> Male
-          <input type="radio" name="sex" value="Female"> Female
-        <div/>
-        <div id="submitDiv">
-          <input type="submit" name="submit" id="submit">
+        
+        <div class="container">
+            
+            <h1>Create your account</h1>
+            
+            <form id="formDiv"action="PHP/users.php" method="post">
+                    <label>Username:<br></label>
+                    <input type="name" name="username" placeholder="Pick an username you like!">
+
+                    <label>Name:<br></label>
+                    <input type="name" name="name" placeholder="First and last name.">
+                    
+                    <label><br>E-mail:<br></label>
+                    <input type="email" name="email" placeholder="E-mail address">
+
+                    <label><br>Password:<br></label>
+                    <input type="password" name="password" placeholder="Pick a strong password!">
+
+                    <label><br>Birth Date:<br></label>
+                    <input type="date" name="date">
+                    <label><br>Sex:</label>
+                    
+                <div id="sex">
+                    <input type="radio" name="sex" value="Male" checked> Male
+                    <input type="radio" name="sex" value="Female"> Female
+                <div/>
+                    
+                <div id="submitDiv">
+                    <input type="submit" name="submit" value="Sign Up" id="submit"/>
+                </div>
+            </form>
         </div>
-      </form>
-    </div>
-  </body>
+        
+    </body>
+
 </html>

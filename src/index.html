@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html>
+    
   <header>
     <title>Event Manager</title>
     <link rel="stylesheet" href="style.css">
   </header>
+    
   <body>
     <div id="container">
 
       <div class="logo">
-        <img src="imgs/icon.png" width=5% heigth=5%>
+        <img src="imgs/icon.png">
         <h1>Event Management</h1>
       </div>
 
       <div id="form">
         <form action="PHP/initpage.php" method="post">
           <input type="name" name="username" placeholder="Username">
+            
           <input type="password" name="password" placeholder="Password">
-          <input type="submit" name="submit1" value="Login" id="submit1" />
-          <input type="submit" name="submit2" value="Sign Up" id="submit2" />
+          <input id="submitDiv" type="submit" name="submit1" value="Login" id="submit1" />
+            
+          <input id="submitDiv" type="submit" name="submit2" value="Sign Up" id="submit2" />
           <a href="#">Forgot your password?</a>
         </form>
       </div>
