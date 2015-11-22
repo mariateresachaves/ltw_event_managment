@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
-
   <header>
     <title>Event Manager</title>
     <link rel="stylesheet" href="style.css">
   </header>
-
   <body>
     <div id="container">
 
@@ -15,16 +13,14 @@
       </div>
 
       <div id="form">
-        <form>
-          <input type="e-mail" name="email" placeholder="e-mail">
-          <input type="password" name="password" placeholder="password">
-          <input type="submit" name="submit" value="Login" id="submit" />
-          <input type="submit" name="submit" value="Sign Up" id="submit" />
+        <form action="PHP/initpage.php" method="post">
+          <input type="name" name="username" placeholder="Username">
+          <input type="password" name="password" placeholder="Password">
+          <input type="submit" name="submit1" value="Login" id="submit1" />
+          <input type="submit" name="submit2" value="Sign Up" id="submit2" />
           <a href="#">Forgot your password?</a>
         </form>
       </div>
-
     </div>
   </body>
-
 </html>
