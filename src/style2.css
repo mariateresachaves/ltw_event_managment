@@ -12,17 +12,17 @@ html, body {
     font-family: 'Roboto';
 }
 
-#formDiv > #sex {
-	display: inline;
+#formDiv > #gender input {
+	display: inline-block;
 }
 
 #formDiv input {
 	background-color: white;
-    border-radius:6px;
+    border-radius: 6px;
     font-size: 15px;
-    border:none;
+    border: none;
 	display: block;
-	margin:10px auto;
+	margin: 10px auto;
     color: #a6a6a6;
     font-family: 'lato';
     font-weight: 300;
@@ -30,12 +30,12 @@ html, body {
 }
 
 label {
-    border-radius:6px;
+    border-radius: 6px;
     font-size: 20px;
     font-weight: bold;
-    border:none;
+    border: none;
 	display: block;
-	margin:10px auto;
+	margin: 10px auto;
 }
 
 .container {
@@ -93,7 +93,7 @@ label {
     margin-left: 30px;
 }
 
-#submitDiv:hover {
+#formDiv #submit:hover {
     border: none;
     color: white;
     background: #a6a6a6;
@@ -113,14 +113,15 @@ label {
     color: #d9d9d9;
 }
 
-#submitDiv {
+#formDiv #submit {
 	background-color: white;
-    border-radius:10px;
+    border-radius: 10px;
     color: #00ccff;
     font-size: 20px;
-    border:none;
+    border: none;
 	display: block;
-	margin:10px auto;
+	margin: 10px auto;
 	margin-top: 20px;
-	width: 150px;
+	width: auto;
+    padding: 5px;
 }
