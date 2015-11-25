@@ -5,6 +5,6 @@ CREATE TABLE users (
 	email VARCHAR,
 	dateu DATE,
 	image VARCHAR,
-	sex VARCHAR,
+	gender VARCHAR,
 	regist_date DATETIME NOT NULL DEFAULT current_timestamp
 );
