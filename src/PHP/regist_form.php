@@ -3,7 +3,7 @@
 
     <head>
         <title>Register</title>
-        <link rel="stylesheet" href="../style2.css">
+        <link rel="stylesheet" href="../css/style2.css">
     </head>
 
     <body>
@@ -23,7 +23,7 @@
             
             <h1>Create your account</h1>
             
-            <form id="formDiv" action="PHP/users.php" method="post">
+            <form id="formDiv" action="users.php" method="post">
                     <label>Username:<br></label>
                     <input type="name" name="username" placeholder="Pick an username you like!" required>
 
