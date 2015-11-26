@@ -4,7 +4,6 @@ CREATE TABLE users (
 	password VARCHAR,
 	email VARCHAR,
 	dateu DATE,
-	image VARCHAR,
-	sex VARCHAR,
+	gender VARCHAR,
 	regist_date DATETIME NOT NULL DEFAULT current_timestamp
 );

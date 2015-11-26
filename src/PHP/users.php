@@ -1,25 +1,27 @@
 <?php
-	$db = new PDO('sqlite:events.db');
-	$stmt = $db->prepare('INSERT INTO users (username, name, password, email, dateu, sex) VALUES (:username, :name, :password, :email, :dateu, :sex)');
-	$stmt->bindParam(':username', $_POST["username"]);
-	$stmt->bindParam(':name', $_POST["name"]);
-	$hpassword = md5($_POST["password"]);
-	$stmt->bindParam(':password', $hpassword);
-	$stmt->bindParam(':email', $_POST["email"]);
-	$stmt->bindParam(':dateu', $_POST["date"]);
-	$stmt->bindParam(':sex', $_POST["sex"]);
-	$stmt->execute();
+	include_once('connection.php');
+	$stmt_1 = $db->prepare("SELECT username FROM users WHERE username='".$_POST["username"]."'");
+	$stmt_1->execute();  
+	$result_1 = $stmt_1->fetchAll();
 	
-	$stmt = $db->prepare('SELECT * FROM users');
-	$stmt->execute();  
-	$result = $stmt->fetchAll();
-	
-	foreach($result as $row) {
-    echo '<h1>' . $row['username'] . '</h1>';
-    echo '<p>' . $row['name'] . '</p>';
-	echo '<p>' . $row['password'] . '</p>';
-	echo '<p>' . $row['email'] . '</p>';
-	echo '<p>' . $row['dateu'] . '</p>';
-	echo '<p>' . $row['sex'] . '</p>';
-  }
+	if(!empty($result_1))
+	{
+		echo '<script type="text/javascript">';
+		echo 'alert("Username has already been taken!")';
+		echo '</script>';
+	}
+	else
+	{
+		$stmt_2 = $db->prepare('INSERT INTO users (username, name, password, email, dateu, gender) VALUES (:username, :name, :password, :email, :dateu, :gender)');
+		$stmt_2->bindParam(':username', $_POST["username"]);
+		$stmt_2->bindParam(':name', $_POST["name"]);
+		$hpassword = md5($_POST["password"]);
+		$stmt_2->bindParam(':password', $hpassword);
+		$stmt_2->bindParam(':email', $_POST["email"]);
+		$stmt_2->bindParam(':dateu', $_POST["date"]);
+		$stmt_2->bindParam(':gender', $_POST["gender"]);
+		$stmt_2->execute();
+		header('Location:../user_reg.html');
+		die();
+	}
 ?>
