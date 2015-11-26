@@ -8,11 +8,13 @@
 	$stmt->execute();  
 	$result = $stmt->fetchAll();
 	
+    // Check if user is registered
 	if(empty($result))
 	{
 		header('Location: ../user_notr.html');
 		die();
 	}
+    // if user is registered
 	else
 	{
 		$name = $result[0][0];
@@ -21,9 +23,9 @@
 	}
 ?>
 <html>
-	<header>
+	<head>
 		<title><?php echo $username?>'s profile</title>
-	</header>
+	</head>
 	<body>
 		<div id="user_greet">
 			<h3> Hello <?php echo $name?>!</h3>

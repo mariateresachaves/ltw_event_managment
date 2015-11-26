@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 
-    <header>
+    <head>
         <title>Register</title>
         <link rel="stylesheet" href="style2.css">
-    </header>
+    </head>
 
     <body>
         
