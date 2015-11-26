@@ -37,7 +37,7 @@
                     <input type="password" name="password" placeholder="Pick a strong password!" required>
 
                     <label><br>Birth Date:<br></label>
-                    <input type="date" name="date" max="2015-01-01" required>
+                    <input type="date" name="date" max="<?php echo date('Y-m-d'); ?>" required>
                     <label><br>Gender:</label>
                     
                 <div id="gender">
