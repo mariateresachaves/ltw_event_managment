@@ -3,7 +3,7 @@
 
     <head>
         <title>Register</title>
-        <link rel="stylesheet" href="style2.css">
+        <link rel="stylesheet" href="../style2.css">
     </head>
 
     <body>
@@ -11,7 +11,7 @@
         <div class="menu">
             <div id ="left">
                 <div id="logo">
-                    <img src="imgs/icon.png">
+                    <img src="../imgs/icon.png">
                 </div>
                 <div id="title">
                     <h2>Event Management</h2>
