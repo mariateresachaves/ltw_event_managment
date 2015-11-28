@@ -21,12 +21,29 @@
         
         <h1>Choose a new password</h1>
         
-        <form id="form2" action="reset_password.php" method="post">
+        <form id="form2" action="reset_password.php" onsubmit="return validate_password()" method="post">
             <input type="hidden" name="token" value="<?php echo $_GET["token"] ?>">
-            <input type="password" name="password" placeholder="Password">
-            <input type="password" name="confirm_password" placeholder="Confirm your password">
-            <input type="submit" name="submit" value="Submit" id="submit"/>
+            <input id="password" type="password" name="password" placeholder="Password">
+            <input id="confirm_password" type="password" name="confirm_password" placeholder="Confirm your password">
+            <input type="submit" name="submit" value="Submit" id="submit">
         </form>
     </div>
+      
+    <script>
+        
+        function validate_password() {
+            var password = document.getElementById("password").value;
+            var confirm_password = document.getElementById("confirm_password").value;
+        
+            if(password === confirm_password)
+                return true;
+
+            else {
+                alert("Passwords don't match.");
+                return false;
+            }
+        }
+        
+    </script>
   </body>
 </html>
