@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
     <head>
         <title>Register</title>
         <link rel="stylesheet" href="../css/style2.css">
@@ -48,7 +47,5 @@
                 <input type="submit" name="submit" value="Sign Up" id="submit"/>
             </form>
         </div>
-        
     </body>
-
 </html>

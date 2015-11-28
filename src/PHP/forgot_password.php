@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-    
   <head>
     <title>Forgot Password</title>
     <link rel="stylesheet" href="../css/style3.css">
@@ -28,7 +27,5 @@
             <input type="submit" name="submit" value="Submit" id="submit">
         </form>
     </div>
-        
-    
   </body>
 </html>

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-    
   <head>
     <title>Forgot Password</title>
     <link rel="stylesheet" href="../css/style3.css">
@@ -22,7 +21,5 @@
         <h1>Thank you</h1>
         <p>You have received an e-mail with some instructions to reset your password.</p>
     </div>
-        
-    
   </body>
 </html>
