@@ -25,16 +25,16 @@
             
             <form id="formDiv" action="users.php" method="post">
                     <label>Username:<br></label>
-                    <input type="name" name="username" placeholder="Pick an username you like!" required>
+                    <input type="name" name="username" placeholder="Choose an username" required>
 
                     <label>Name:<br></label>
-                    <input type="name" name="name" placeholder="First and last name." required>
+                    <input type="name" name="name" placeholder="First and last name" required>
                     
                     <label><br>E-mail:<br></label>
                     <input type="email" name="email" placeholder="E-mail address" required>
 
                     <label><br>Password:<br></label>
-                    <input type="password" name="password" placeholder="Pick a strong password!" required>
+                    <input type="password" name="password" placeholder="Choose a password" required>
 
                     <label><br>Birth Date:<br></label>
                     <input type="date" name="date" max="<?php echo date('Y-m-d'); ?>" required>

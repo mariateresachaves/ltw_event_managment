@@ -7,8 +7,8 @@
 	$stmt = $db->prepare("SELECT name, username, password FROM users WHERE username='".$username."' AND password='".$password."'");
 	$stmt->execute();  
 	$result = $stmt->fetchAll();
-	
-    // Check if user is registered
+
+    // Check if user is  registered
 	if(empty($result))
 	{
 		header('Location: ../user_notr.html');

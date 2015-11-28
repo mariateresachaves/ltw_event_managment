@@ -1,0 +1,117 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,100);
+
+html, body {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	background: url('../imgs/event_n.jpg') no-repeat center center fixed;
+  	background-size: cover;
+    color: white;
+	margin: 0;
+    font-family: 'Roboto';
+}
+
+#form input {
+	background-color: white;
+    border-radius: 6px;
+    font-size: 15px;
+    border: none;
+	display: inline-block;
+	margin: 10px 10px;
+    color: #a6a6a6;
+    font-family: 'lato';
+    font-weight: 300;
+    padding: 5px;
+    width: 250px;
+}
+
+.container {
+    margin: 0;
+    width: 50%;
+    height: 50%;
+	position: relative;
+	left: 50%;
+    top: 50%;
+	transform: translate(-50%,-50%);
+}
+
+.container > h1 {
+    margin-top: 0;
+    font-weight: 700;
+}
+
+.menu {
+	margin: 0;
+	width: 100%;
+    height: 10%;
+}
+
+.menu > h2 {
+    margin-bottom: 0;
+    font-weight: 700;
+}
+
+#left {
+    width: 60%;
+    height: 100%;
+}
+
+#title {
+	width: 35%;
+    height: 100%;
+    line-height: 35px;
+    float: left;
+}
+
+#title > h2 {
+    margin-top: 15px;
+    font-weight: 700;
+}
+
+#logo {
+	width: 5%;
+    height: 100%;
+    display: inline-block;
+    float: left;
+}
+
+#logo > img {
+    max-height: 40px;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+#form #submit:hover {
+    border: none;
+    color: white;
+    background: #a6a6a6;
+    box-shadow: 0px 0px 1px #777;
+}
+
+#form #submit {
+	background-color: white;
+    border-radius: 10px;
+    color: #00ccff;
+    font-size: 16px;
+    border: none;
+	display: inline-block;
+	margin: 10px auto;
+	margin-top: 20px;
+	width: auto;
+    padding: 5px;
+}
+
+*::-webkit-input-placeholder {
+    color: #d9d9d9;
+}
+*:-moz-placeholder {
+    color: #d9d9d9;
+}
+*::-moz-placeholder {
+    color: #d9d9d9;
+}
+*:-ms-input-placeholder {
+    color: #d9d9d9;
+}
+

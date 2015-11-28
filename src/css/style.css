@@ -72,6 +72,23 @@ h1 {
     padding: 5px;
 }
 
+#submit3:hover {
+    text-decoration: none;
+    font-family: 'lato';
+    font-weight: 400;
+    font-size: 20px;
+    color: black;
+}
+
+#submit3 {
+    text-decoration: none;
+    font-family: 'lato';
+    font-weight: 400;
+    color: white;
+    font-size: 20px;
+    padding: 5px;
+}
+
 #form input {
 	background-color: white;
     border-radius:6px;
