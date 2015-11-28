@@ -7,7 +7,7 @@
     
   <body>
     <div class="menu">
-        <div id ="left">
+        <div id="left">
             <div id="logo">
                 <img src="../imgs/icon.png">
             </div>

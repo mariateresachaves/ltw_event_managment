@@ -7,10 +7,11 @@
 
     <body>
         <div class="menu">
-            <div id ="left">
+            <div id="left">
                 <div id="logo">
                     <img src="../imgs/icon.png">
                 </div>
+                
                 <div id="title">
                     <h2>Event Management</h2>
                 </div>
@@ -20,7 +21,7 @@
         <div class="container">
             <h1>Create your account</h1>
             
-            <form id="formDiv" action="users.php" method="post">
+            <form id="formDiv" action="../db/users.php" method="post">
                     <label>Username:<br></label>
                     <input type="name" name="username" placeholder="Choose an username" required>
 
