@@ -6,7 +6,6 @@
     </head>
 
     <body>
-        
         <div class="menu">
             <div id ="left">
                 <div id="logo">
@@ -19,7 +18,6 @@
         </div>
         
         <div class="container">
-            
             <h1>Create your account</h1>
             
             <form id="formDiv" action="users.php" method="post">

@@ -18,7 +18,6 @@
     </div>
       
     <div class="container">
-        
         <h1>Choose a new password</h1>
         
         <form id="form2" action="reset_password.php" onsubmit="return validate_password()" method="post">

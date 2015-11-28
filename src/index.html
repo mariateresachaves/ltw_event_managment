@@ -1,27 +1,68 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Event Manager</title>
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-    
-  <body>
-    <div id="container">
+    <head>
+        <title>Event Manager</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    </head>
 
-      <div class="logo">
-        <img src="imgs/icon.png">
-        <h1>Event Management</h1>
-      </div>
+    <body>
+        <div id="container">
+            <div class="logo">
+                <img src="imgs/icon.png">
+                <h1>Event Management</h1>
+            </div>
+
+            <form id="form" action="PHP/mainpage.php" onsubmit="return check_user()" method="post">
+                <input id="username" type="name" name="username" placeholder="Username">
+                <input id="password" type="password" name="password" placeholder="Password">
+                <input id="submit" type="submit" name="submit" value="Login">
+            </form>
+
+            <br><a href="PHP/regist_form.php" id="submit2"> Sign Up </a><br><br>
+            <a id="submit3" href="PHP/forgot_password.php">Forgot your username or password?</a>
+        </div>
         
-    <form id="form" action="PHP/mainpage.php" method="post">
-        <input type="name" name="username" placeholder="Username">
-        <input type="password" name="password" placeholder="Password">
-        <input type="submit" name="submit" value="Login" id="submit" />
-    </form>
+        <script>
         
-	  <br><a href="PHP/regist_form.php" id="submit2"> Sign Up </a><br><br>
-        <a id="submit3" href="PHP/forgot_password.php">Forgot your username or password?</a>
-        
-      </div>
-  </body>
+            function check_user() {
+                var username = document.getElementById("username").value;
+                var password = document.getElementById("password").value;
+                var index_username = "username=" + username;
+                var index_password = "password=" + password;
+                var index = index_username + "&" + index_password;
+                
+                var user_exists = $.ajax({
+                    type: "POST",
+                    url: "PHP/verify_user.php",
+                    cache: false,
+                    async: false,
+                    data: index,
+                    dataType: "json",
+                    success: function(data) {
+                                
+                                if(data) { // Verifies if exists
+                    
+                                    if(data == "false") // Verifies if the user doesn't exists
+                                        alert("Not registered yet!");
+
+                                }
+                                else
+                                    alert("An error occurred.");
+                    
+                            },
+                    error: function() {
+                                alert("Error.");
+                            }
+                });
+            
+                if(user_exists.responseJSON == "true")
+                    return true;
+            
+                else
+                    return false;
+            }
+            
+        </script>
+    </body>
 </html>

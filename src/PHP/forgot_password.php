@@ -18,7 +18,6 @@
     </div>
       
     <div class="container">
-        
         <h1>Forgot Your Username or Password?</h1>
         <p>Forgot your info? No problem! Enter your account's email address and we'll send you instructions on how to update your password.</p>
         
