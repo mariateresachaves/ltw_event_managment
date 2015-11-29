@@ -5,10 +5,15 @@
     $name = $_SESSION['name'];
     $username = $_SESSION['login_user'];
 
-    $stmt = $db->prepare("SELECT name FROM events, participations WHERE events.id_event=participations.id_event 
-                                                                        AND participations.username=?");
+    $stmt = $db->prepare("SELECT name, image FROM events, participations WHERE events.id_event=participations.id_event 
+                                                                               AND participations.username=?");
 	$stmt->execute(array($username));
-	$result = $stmt->fetchAll();
+	$events = $stmt->fetchAll();
+
+    $stmt2 = $db->prepare("SELECT name FROM events_types");
+	$stmt2->execute();
+	$events_types = $stmt2->fetchAll();
+
 ?>
 
 <!DOCTYPE html>
@@ -32,6 +37,9 @@
                     <h2>Event Management</h2>
                 </div>
             </div>
+            <div id="right">
+                <a href="../db/create_event.php"><h3>CREATE AN EVENT</h3></a>
+            </div>
         </div>
         
         
@@ -48,72 +56,63 @@
             
             <div id="userEvents">
                 <?php 
-                    foreach($result as $event) {
+                    foreach ($events as $event) {
                 ?>
 
-                <div id="event">
-                    <img src="../imgs/user_avatar.png" alt="User Icon">
-                    <p><?php echo $event['name']; ?></p>
-                </div>
+                    <div id="event">
+                        <img src="<?php echo "../" . $event['image']?>" alt="User Icon">
+                        <p><?php echo $event['name']; ?></p>
+                    </div>
 
                 <?php      
                     }
                 ?>
-                <p>HELLO</p>
-                <p>HELLO</p>
-                <p>HELLO</p>
-                <p>HELLO</p>
-                <p>HELLO</p>
-                <p>HELLO</p>
-                <p>HELLO</p>
-                <p>HELLO</p>
-                <p>HELLO</p>
-                <p>HELLO</p>
-                <p>HELLO</p>
-                <p>HELLO</p>
-                
             </div>
         </div>
         
         <div class="container">
-            <div id="user_greet">
-                <h3> Hello <?php echo $name ?>!</h3>
-            </div>
-
-            <div id="events_information">
-				<a href="../db/create_event.php"><h3>CREATE AN EVENT</h3></a>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
-                <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
+            <div id="eventsInformation">
+                
+                <?php
+                    $count = 0;
+                
+                    foreach($events_types as $events_type) {
+                
+                        switch($count) {
+                            case 0:
+                ?>
+                                <div id="comboEvent">
+                                    <div id="eventBox1">
+                                    <?php
+                                        echo $events_type['name'];
+                                    ?>
+                                    </div>
+                <?php
+                                $count = $count + 1;
+                                break;
+                            case 1:
+                ?>
+                                    <div id="eventBox2">
+                                    <?php
+                                        echo $events_type['name'];
+                                    ?>
+                                    </div>
+                                </div>
+                <?php
+                                $count = $count - 1;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                
+                    if($count == 0) {
+                ?>
+                        </div>
+                <?php
+                    }
+                ?>
             </div>
         </div>
-        		
 	</body>
 </html>

@@ -14,25 +14,23 @@ html, body {
 
 .container {
     margin: 0;
-    width: 50%;
-    height: 50%;
-	left: 70%;
-    top: 90%;
-	transform: translate(-70%,-90%);
+    transform: translate(113%, 35%);
     position: absolute;
 }
 
 .container > h1 {
     margin-top: 0;
+    margin-bottom: 50px;
     font-weight: 700;
 }
 
 .menu {
-	margin-top: 0;
+	margin: 0;
 	width: 100%;
     height: 10%;
     position: fixed;
     z-index: 1;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.28);
 }
 
 #menuBackground {
@@ -53,6 +51,13 @@ html, body {
     width: 60%;
     height: 100%;
 }
+
+#right {
+    width: 180%;
+    height: 100%;
+    transform: translate(0, -100%);
+}
+
 
 #title {
 	width: 35%;
@@ -135,6 +140,7 @@ html, body {
     width: 50px;
     height: 50px;
     display: inline-block;
+    background-color: white;
 }
 
 #userProfile > #userEvents >  #event > p {
@@ -146,4 +152,28 @@ html, body {
     margin-top: 30px;
     text-align: left;
     margin-left: 35px;
+}
+
+#eventsInformation > #comboEvent > #eventBox1, #eventsInformation > #comboEvent > #eventBox2 {
+    display: inline-block;
+}
+
+#eventsInformation > #comboEvent > #eventBox1 {
+    margin-bottom: 100px;
+    margin-right: 100px;
+    background-color: #0e5d77;
+    width: 150px;
+    height: 79px;
+    padding-top: 66px;
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.5);
+}
+
+#eventsInformation > #comboEvent > #eventBox2 {
+    margin-bottom: 100px;
+    margin-right: 100px;
+    background-color: #0e5d77;
+    width: 150px;
+    height: 79px;
+    padding-top: 66px;
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.5);
 }
