@@ -81,6 +81,7 @@
             </div>
 
             <div id="events_information">
+				<a href="../db/create_event.php"><h3>CREATE AN EVENT</h3></a>
                 <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
                 <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
                 <p>HELLOHELLOHELLOHELLOHELLOHELLOHELLO</p>
