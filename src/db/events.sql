@@ -20,6 +20,7 @@ CREATE TABLE events (
 	id_event INTEGER,
 	username VARCHAR,
     id_events_types INTEGER,
+    name VARCHAR,
 	image VARCHAR,
 	event_date DATE,
 	description TEXT,
@@ -31,7 +32,7 @@ CREATE TABLE events (
 
 CREATE TABLE events_types (
     id_events_types INTEGER,
-    name VARCHAR,
+    name VARCHAR UNIQUE,
     PRIMARY KEY (id_events_types)
 );
 
@@ -63,3 +64,4 @@ CREATE TABLE comments (
 -- INSERT INTO events_types (id_events_types, name) VALUES (NULL, 'Concert');
 -- INSERT INTO events (id_event, username, image, event_date, description, id_events_types) VALUES (NULL, 'naodameu', 'images/stupidstuff.jpg', '2015-12-25', 'MERRY CHRISTMAS HO HO HO!', 1);
 -- INSERT INTO comments (username, id_event, text) VALUES ('naodameu', 1, 'OMG CHRISTMAS IS GOING TO BE ROCKIN!');
+

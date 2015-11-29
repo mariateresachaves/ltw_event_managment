@@ -8,7 +8,7 @@
     // Verifies if this user exists in the database
 
 	$stmt = $db->prepare("SELECT name, username, password FROM users WHERE username=? AND password=?");
-	$stmt->execute(array($username, $password));  
+	$stmt->execute(array($username, $password));
 	$result = $stmt->fetchAll();
 
     // User is not registered
@@ -19,26 +19,14 @@
 
     // User is registered
 	else {
-		$name = $result[0][0];
 		session_start();
+        
+        $name = $result[0][0];
 		$_SESSION['login_user'] = $username;
+        $_SESSION['name'] = $name;
+        
+        header('Location: ../templates/dashboard.php');
+		die();
 	}
 
 ?>
-
-<html>
-	<head>
-		<title><?php echo $username?>'s profile</title>
-	</head>
-    
-	<body>
-		<div id="user_greet">
-			<h3> Hello <?php echo $name?>!</h3>
-		</div>
-        
-		<div id="events_information">
-			<h2> CREATE AN EVENT </h2>
-			<h2> MANAGE YOUR EVENTS </h2>		
-		</div>		
-	</body>
-</html>
