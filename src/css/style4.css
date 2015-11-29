@@ -14,7 +14,7 @@ html, body {
 
 .container {
     margin: 0;
-    transform: translate(113%, 35%);
+    transform: translate(113%, 150px);
     position: absolute;
 }
 
@@ -160,20 +160,28 @@ html, body {
 
 #eventsInformation > #comboEvent > #eventBox1 {
     margin-bottom: 100px;
+    margin-left: 0;
     margin-right: 100px;
     background-color: #0e5d77;
     width: 150px;
     height: 79px;
     padding-top: 66px;
     box-shadow: 5px 5px 20px rgba(0,0,0,0.5);
+    text-align: center;
 }
 
 #eventsInformation > #comboEvent > #eventBox2 {
     margin-bottom: 100px;
     margin-right: 100px;
+    margin-left: 0;
     background-color: #0e5d77;
     width: 150px;
     height: 79px;
     padding-top: 66px;
     box-shadow: 5px 5px 20px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+#eventsInformation > #comboEvent {
+    text-align: left;
 }
