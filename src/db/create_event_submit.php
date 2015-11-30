@@ -16,18 +16,7 @@
         else
 			$uploadOk = 0;
     }
-<<<<<<< HEAD
-  
-=======
 
-    // Check file size
-    if ($_FILES["image"]["size"] > 500000)
-    {
-        echo "Sorry, your file is too large.";
-        $uploadOk = 0;
-    }
-    
->>>>>>> origin/master
 	if ($uploadOk == 0)
     {
         echo "Sorry, your file was not uploaded.";

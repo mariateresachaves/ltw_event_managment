@@ -13,7 +13,6 @@
   <body>
 	<h1>Create your event</h1>
     <form id="create_event" action="create_event_submit.php" method="post" enctype="multipart/form-data">
-
         <label for="event_name"><br>Name of your event:<br></label>
         <input id="event_name" type="name" name="event_name" placeholder="Choose a name for your event!">
 
