@@ -16,7 +16,7 @@
         else
 			$uploadOk = 0;
     }
-
+  
 	if ($uploadOk == 0)
     {
         echo "Sorry, your file was not uploaded.";

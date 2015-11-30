@@ -17,7 +17,7 @@
 
     if(!(empty($_FILES["image"]["name"])))
     {
-		$target_dir = "../imgs/";
+		 $target_dir = "../imgs/";
 		$target_file = $target_dir.$_SESSION['login_user'].basename($_FILES["image"]["name"]);
 		$uploadOk = 1;
 		$imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
@@ -44,7 +44,7 @@
 		
         $stmt_2 = $db->prepare("UPDATE events SET image='".$target_file."'WHERE id_event=".$event_id);
         $stmt_2->execute();
-	}
+    }
 
     if(isset($event_description))
     {
