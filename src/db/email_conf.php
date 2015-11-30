@@ -1,5 +1,4 @@
 <?php
-
     include "class.phpmailer.php";
     include_once('connection.php');
 
@@ -56,5 +55,4 @@
         header("Location: ../templates/check_your_email.php");
         die();
     }
-
 ?>

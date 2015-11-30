@@ -1,5 +1,4 @@
 <?php
-
     include_once('connection.php');
 
     $token = $_POST["token"];
@@ -21,5 +20,4 @@
         header("Location: ../templates/index.html");
         die();
     }
-
 ?>

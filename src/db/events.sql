@@ -59,9 +59,9 @@ CREATE TABLE comments (
 
 -- ------------------------------------------------------------
 
--- INSERT INTO users (username, name, password, email, birthdate, gender) VALUES ('naodameu', 'Nuno Silva', 'amizade', 'ei2187@fe.up.pt', '1994-05-17', 'Male');
+ INSERT INTO users (username, name, password, email, birthdate, gender) VALUES ('naodameu', 'Nuno Silva', 'amizade', 'ei2187@fe.up.pt', '1994-05-17', 'Male');
 -- INSERT INTO users (username, name, password, email, birthdate, gender) VALUES ('mtc', 'Maria Chaves', 'yay', 'up201306842@fe.up.pt', '1993-07-22', 'Female');
--- INSERT INTO events_types (id_events_types, name) VALUES (NULL, 'Concert');
--- INSERT INTO events (id_event, username, name, image, event_date, description, id_events_types) VALUES (NULL, 'naodameu', 'Christmas', 'images/stupidstuff.jpg', '2015-12-25', 'MERRY CHRISTMAS HO HO HO!', 1);
+ INSERT INTO events_types (id_events_types, name) VALUES (NULL, 'Concert');
+ INSERT INTO events (id_event, username, name, image, event_date, description, id_events_types) VALUES (NULL, 'naodameu', 'Christmas', 'images/stupidstuff.jpg', '2015-12-25', 'MERRY CHRISTMAS HO HO HO!', 1);
 -- INSERT INTO comments (username, id_event, text) VALUES ('naodameu', 1, 'OMG CHRISTMAS IS GOING TO BE ROCKIN!');
 

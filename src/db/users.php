@@ -1,9 +1,7 @@
 <?php
-
 	include_once('connection.php');
 
     // Verifies if this username already exists in the database
-
 	$stmt_1 = $db->prepare("SELECT username FROM users WHERE username=?");
 	$stmt_1->execute(array($_POST["username"]));  
 	$result = $stmt_1->fetchAll();
@@ -29,5 +27,4 @@
 		header('Location:../templates/user_reg.html');
 		die();
 	}
-
 ?>
