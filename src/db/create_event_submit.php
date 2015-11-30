@@ -13,15 +13,9 @@
     {
         $check = getimagesize($_FILES["image"]["tmp_name"]);
         if($check !== false)
-        {
-            echo "File is an image - " . $check["mime"] . ".";
-            $uploadOk = 1;
-        }
+			$uploadOk = 1;
         else
-        {
-        echo "File is not an image.";
-        $uploadOk = 0;
-        }
+			$uploadOk = 0;
     }
 
     // Check file size
@@ -30,7 +24,8 @@
         echo "Sorry, your file is too large.";
         $uploadOk = 0;
     }
-    if ($uploadOk == 0)
+    
+	if ($uploadOk == 0)
     {
         echo "Sorry, your file was not uploaded.";
     }
@@ -56,10 +51,6 @@
     $stmt->bindParam(':event_date', $_POST["event_date"]);
     $stmt->bindParam(':description', $_POST['event_description']);
     $stmt->execute();
-
-    $stmt_1 = $db->prepare("SELECT * FROM events");
-    $stmt_1->execute();
-    $result = $stmt_1->fetchAll();
 ?>
 <html>
   <head>

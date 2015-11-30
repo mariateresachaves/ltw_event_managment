@@ -1,5 +1,4 @@
 <?php
-
 	include_once('connection.php');
 	
 	$username = $_POST["username"];
@@ -28,5 +27,4 @@
         header('Location: ../templates/dashboard.php');
 		die();
 	}
-
 ?>

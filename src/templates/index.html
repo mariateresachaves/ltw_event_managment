@@ -5,24 +5,22 @@
         <link rel="stylesheet" href="../css/style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     </head>
-
     <body>
         <div id="container">
             <div class="logo">
                 <img src="../imgs/icon.png">
                 <h1>Event Management</h1>
             </div>
-
             <form id="form" action="../db/mainpage.php" onsubmit="return check_user()" method="post">
                 <input id="username" type="name" name="username" placeholder="Username">
+				
                 <input id="password" type="password" name="password" placeholder="Password">
+				
                 <input id="submit" type="submit" name="submit" value="Login">
             </form>
-
-            <br><a href="regist_form.php" id="submit2">Sign Up</a><br><br>
+            <br><a id="submit2" href="regist_form.php">Sign Up</a><br><br>
             <a id="submit3" href="forgot_password.php">Forgot your username or password?</a>
         </div>
-        
         <script>
             function check_user() {
                 var username = document.getElementById("username").value;
@@ -48,7 +46,7 @@
                                         alert("Username or password incorrect!");
                                 }
                             
-                                // data does not exists
+                                // data does not exist
                                 else
                                     alert("An error occurred.");
                             },
