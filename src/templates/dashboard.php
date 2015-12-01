@@ -42,6 +42,15 @@
                     <a href="dashboard.php"><h2>Event Management</h2></a>
                 </div>
             </div>
+            
+            <div id="right">
+                <div id="search">
+                    <form onsubmit="return searchEvent()" id="form1">
+                        <input type="text" name="search" id="searchBar" placeholder="Search">
+                        <input type="submit" value id="searchButton">
+                    </form>
+                </div>
+            </div>
         </div>
         
         
@@ -118,6 +127,35 @@
         </div>
     
         <script>
+            function searchEvent() {
+                var name = document.getElementById("searchBar").value;
+                var index = "name=" + name;
+                
+                var event_exists = $.ajax({
+                    type: "GET",
+                    url: "../db/search.php",
+                    cache: false,
+                    async: false,
+                    data: index,
+                    dataType: "json",
+                    success: function(data) {
+                                // data exists
+                                if(data) {
+                                    // User or password does not exist in the database
+                                    document.getElementById("eventsInformation").innerHTML=data;
+                                }
+                            
+                                // data does not exists
+                                else
+                                    alert("An error occurred");
+                            },
+                    error: function() {
+                                alert("error");
+                            }
+                });
+                return false;
+            }
+            
             function clickEvent(name) {
                 
                 var index = "name=" + name;

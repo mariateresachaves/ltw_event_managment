@@ -86,6 +86,30 @@ html, body {
     text-decoration: none;
 }
 
+#right {
+    margin: 0;
+    float: right;
+    transform: translate(-30px,-50px);
+}
+
+#right > #search > #form1 > #searchBar {
+    width: 100px;
+    height: 23px;
+    margin-right: -2px;
+    border-style: none;
+    font-family: 'Lato';
+}
+
+#form1 > input[type=submit] {
+    margin-left: -2px;
+    border-style: none;
+    background: url('../imgs/search.png') no-repeat;
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    transform: translate(0, 5px);
+}
+
 #userProfileBackground {
     margin-top: 64px;
     width: 20%;
@@ -225,7 +249,26 @@ html, body {
     word-wrap: break-word;
 }
 
-#information > #informationRight > #eventJoin > form > #join {
+#information > #informationRight > #rightFooter {
+    margin-top: 15px;
+    margin-bottom: 2px;
+}
+
+#information > #informationRight > #rightFooter > #eventOwner {
+    float: right;
+    padding-right: 15px;
+    margin-top: 5px;
+}
+
+#information > #informationRight > #rightFooter > #eventJoin {
+    float: left;
+}
+
+#information > #informationRight > #rightFooter > #eventOwner > p {
+    margin: 0;
+}
+
+#information > #informationRight > #rightFooter > #eventJoin > form > #join {
 	background-color: white;
     border-radius: 5px;
     color: #00ccff;
@@ -238,7 +281,7 @@ html, body {
     padding: 5px 10px;
 }
 
-#information > #informationRight > #eventJoin > form > #join:hover {
+#information > #informationRight > #rightFooter > #eventJoin > form > #join:hover {
     border: none;
     color: white;
     background: #a6a6a6;

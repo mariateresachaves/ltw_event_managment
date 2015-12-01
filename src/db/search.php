@@ -1,15 +1,15 @@
 <?php
     include_once('connection.php');
 
-    $name = $_POST['name'];
+    $name = $_GET['name'];
 
-    $stmt = $db->prepare("SELECT events.* FROM events, events_types WHERE events.id_events_types = events_types.id_events_types and events_types.name=?");
-	$stmt->execute(array($_POST['name']));
-	$type_events = $stmt->fetchAll();
+    $stmt = $db->prepare("SELECT * FROM events WHERE name LIKE ?");
+	$stmt->execute(array("%" . $name . "%"));
+	$events = $stmt->fetchAll();
 
     $information = "";
 
-    foreach($type_events as $event) {
+    foreach($events as $event) {
         $information .= "<div id=\"information\">
                             <div id=\"informationLeft\">
                                 <div id=\"informationImg\">
@@ -41,5 +41,9 @@
                         </div>";
     }
 
-    echo json_encode($information);
+    if($information=="") {
+        echo json_encode("No results have been found.");
+    }
+    else
+        echo json_encode($information);
 ?>
