@@ -35,11 +35,11 @@
 		<div class="menu">
             <div id="left">
                 <div id="logo">
-                    <img src="../imgs/icon.png">
+                    <a href="dashboard.php"><img src="../imgs/icon.png"></a>
                 </div>
                 
                 <div id="title">
-                    <h2>Event Management</h2>
+                    <a href="dashboard.php"><h2>Event Management</h2></a>
                 </div>
             </div>
         </div>

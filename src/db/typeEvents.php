@@ -3,7 +3,7 @@
 
     $name = $_POST['name'];
 
-    $stmt = $db->prepare("SELECT * FROM events, events_types WHERE events.id_events_types = events_types.id_events_types and events_types.name=?");
+    $stmt = $db->prepare("SELECT events.* FROM events, events_types WHERE events.id_events_types = events_types.id_events_types and events_types.name=?");
 	$stmt->execute(array($_POST['name']));
 	$type_events = $stmt->fetchAll();
 
@@ -13,7 +13,7 @@
         $information .= "<div id=\"information\">
                             <div id=\"informationLeft\">
                                 <div id=\"informationImg\">
-                                    <img src=\"../imgs/" . $event['image'] . "\" alt=\"Event Image\">
+                                    <img src=\"../" . $event['image'] . "\" alt=\"Event Image\">
                                 </div>
                             </div>
                                 
