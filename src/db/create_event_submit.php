@@ -1,8 +1,9 @@
 <?php
     session_start();
     include_once('connection.php');
-    $target_dir = "../imgs/";
-    $target_file = $target_dir.$_SESSION['login_user'].basename($_FILES["image"]["name"]);
+    $target_dir = "imgs/";
+    $target = $target_dir.$_SESSION['login_user'].basename($_FILES["image"]["name"]);
+    $target_file = "../imgs/".$_SESSION['login_user'].basename($_FILES["image"]["name"]);
     $uploadOk = 1;
     $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
     // Check if image file is a actual image or fake image
@@ -31,7 +32,7 @@
     $stmt->bindParam(':username', $_SESSION['login_user']);
     $stmt->bindParam(':id_events_types', $_POST["event_type"]);
     $stmt->bindParam(':name', $_POST["event_name"]);
-    $stmt->bindParam(':image', $target_file);
+    $stmt->bindParam(':image', $target);
     $stmt->bindParam(':event_date', $_POST["event_date"]);
     $stmt->bindParam(':description', $_POST['event_description']);
     $stmt->execute();
