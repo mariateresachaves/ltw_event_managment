@@ -19,6 +19,9 @@
 		<div id="events_information">
 			<h2> CREATE AN EVENT </h2>
 			<h2> MANAGE YOUR EVENTS </h2>		
-		</div>		
+		</div>
+        <div id="createEvent">
+            <a href="../db/create_event.php"><h3>CREATE AN EVENT</h3></a>
+        </div>
 	</body>
 </html>

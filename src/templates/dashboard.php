@@ -42,9 +42,6 @@
                     <h2>Event Management</h2>
                 </div>
             </div>
-            <div id="right">
-                <a href="../db/create_event.php"><h3>CREATE AN EVENT</h3></a>
-            </div>
         </div>
         
         
@@ -52,8 +49,8 @@
         </div>
         <div id="userProfile">
             <div id="profilePage">
-                <img src="../imgs/user_avatar.png" alt="User Icon">
-                <p><?php echo $name ?></p>
+                <a href="profile.php"><img src="../imgs/user_avatar.png" alt="User Icon"></a>
+                <a href="profile.php"><p><?php echo $name ?></p></a>
             </div>
             
             <hr>
