@@ -47,7 +47,7 @@ h1 {
 	margin: 10px auto;
 	margin-top: 20px;
 	width: auto;
-    padding: 5px;
+    padding: 5px 15px;
 }
 
 #submit2:hover {
@@ -78,7 +78,7 @@ h1 {
     text-decoration: none;
     font-family: 'lato';
     font-weight: 400;
-    font-size: 20px;
+    font-size: 16px;
     color: black;
     cursor: pointer;
 }
@@ -88,7 +88,7 @@ h1 {
     font-family: 'lato';
     font-weight: 400;
     color: white;
-    font-size: 20px;
+    font-size: 16px;
     padding: 5px;
 }
 

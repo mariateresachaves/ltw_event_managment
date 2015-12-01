@@ -1,12 +1,10 @@
 <?php
     session_start();
     include_once('connection.php');
-
     $target_dir = "../imgs/";
     $target_file = $target_dir.$_SESSION['login_user'].basename($_FILES["image"]["name"]);
     $uploadOk = 1;
     $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
-
     // Check if image file is a actual image or fake image
     if(isset($_POST["submit"]))
     {
@@ -26,7 +24,6 @@
         if (!(move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)))
             echo "Sorry, there was an error uploading your file.";
     }
-
 	// Insert the data obtained through POST method into the database regarding the event
     $null = NULL;
     $stmt = $db->prepare('INSERT INTO events (id_event, username, id_events_types, name, image, event_date, description) VALUES (:id_event, :username, :id_events_types, :name, :image, :event_date, :description)');

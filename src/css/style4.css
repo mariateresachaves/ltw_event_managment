@@ -154,11 +154,12 @@ html, body {
     margin-left: 35px;
 }
 
-#eventsInformation > #comboEvent > #eventBox1, #eventsInformation > #comboEvent > #eventBox2 {
+#eventsInformation > .comboEvent > .eventBox1, #eventsInformation > .comboEvent > .eventBox2 {
     display: inline-block;
+    cursor: pointer;
 }
 
-#eventsInformation > #comboEvent > #eventBox1 {
+#eventsInformation > .comboEvent > .eventBox1 {
     margin-bottom: 100px;
     margin-left: 0;
     margin-right: 100px;
@@ -170,7 +171,7 @@ html, body {
     text-align: center;
 }
 
-#eventsInformation > #comboEvent > #eventBox2 {
+#eventsInformation > .comboEvent > .eventBox2 {
     margin-bottom: 100px;
     margin-right: 100px;
     margin-left: 0;
@@ -182,6 +183,6 @@ html, body {
     text-align: center;
 }
 
-#eventsInformation > #comboEvent {
+#eventsInformation > .comboEvent {
     text-align: left;
 }

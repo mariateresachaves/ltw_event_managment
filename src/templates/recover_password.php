@@ -31,12 +31,10 @@
             function validate_password() {
                 var password = document.getElementById("password").value;
                 var confirm_password = document.getElementById("confirm_password").value;
-
                 // Verifies if password is correctly confirmed
                 
                 if(password === confirm_password)
                     return true;
-
                 else {
                     alert("Passwords don't match.");
                     return false;

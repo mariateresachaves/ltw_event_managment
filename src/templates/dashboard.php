@@ -13,7 +13,6 @@
     $stmt2 = $db->prepare("SELECT name FROM events_types");
 	$stmt2->execute();
 	$events_types = $stmt2->fetchAll();
-
 ?>
 
 <!DOCTYPE html>
@@ -21,8 +20,8 @@
 	<head>
 		<title>Event management</title>
         <link rel="stylesheet" href="../css/style4.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	</head>
-    
 	<body>
         <div id="menuBackground">
         </div>
@@ -81,8 +80,8 @@
                         switch($count) {
                             case 0:
                 ?>
-                                <div id="comboEvent">
-                                    <div id="eventBox1">
+                                <div class="comboEvent">
+                                    <div id="<?php echo $events_type['name'] ?>" class="eventBox1" onclick="clickEvent('<?php echo $events_type['name']?>')">
                                     <?php
                                         echo $events_type['name'];
                                     ?>
@@ -92,7 +91,7 @@
                                 break;
                             case 1:
                 ?>
-                                    <div id="eventBox2">
+                                    <div id="<?php echo $events_type['name'] ?>" class="eventBox2" onclick="clickEvent('<?php echo $events_type['name']?>')">
                                     <?php
                                         echo $events_type['name'];
                                     ?>
@@ -114,5 +113,35 @@
                 ?>
             </div>
         </div>
+    
+        <script>
+            function clickEvent(name) {
+                
+                var index = "name=" + name;
+                
+                var user_exists = $.ajax({
+                    type: "POST",
+                    url: "../db/typeEvents.php",
+                    cache: false,
+                    async: false,
+                    data: index,
+                    dataType: "json",
+                    success: function(data) {
+                                // data exists
+                                if(data) {
+                                    // User or password does not exist in the database
+                                    document.getElementById("eventsInformation").innerHTML=data;
+                                }
+                            
+                                // data does not exists
+                                else
+                                    alert("There are no events of that type.");
+                            },
+                    error: function() {
+                                alert("error");
+                            }
+                });
+            }
+        </script>
 	</body>
 </html>

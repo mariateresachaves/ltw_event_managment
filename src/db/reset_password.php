@@ -1,6 +1,5 @@
 <?php
     include_once('connection.php');
-
     $token = $_POST["token"];
     
     // User clicked on submit button
