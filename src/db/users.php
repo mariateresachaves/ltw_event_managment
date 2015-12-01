@@ -6,7 +6,7 @@
 	$result = $stmt_1->fetchAll();
 	// username already exists
 	if(!empty($result)) {
-		header('Location: ../templates/user_already_taken.html');
+		header('Location: ../templates/user_already_taken.php');
 		die();
 	}
     // username can be used
@@ -21,7 +21,7 @@
 		$stmt_2->bindParam(':gender', $_POST["gender"]);
 		$stmt_2->execute();
         
-		header('Location:../templates/user_reg.html');
+		header('Location:../templates/user_reg.php');
 		die();
 	}
 ?>

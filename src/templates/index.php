@@ -1,3 +1,12 @@
+<?php
+    session_start();
+
+    if(isset($_SESSION['login_user'])) {
+        header("Location: dashboard.php");
+        die();
+    }
+?>
+
 <!DOCTYPE html>
 <html>
     <head>

@@ -21,7 +21,7 @@
 <html>
   <head>
       <title>Modify your event!</title>
-	  <link rel="stylesheet" href="../../css/style5.css">
+	  <link rel="stylesheet" href="../css/style5.css">
   </head>
   <body>
     <h1>Modify your event</h1>

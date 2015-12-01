@@ -10,13 +10,13 @@
         $stmt_1 = $db->prepare("UPDATE users SET password=? WHERE token=?");
 	    $stmt_1->execute(array($password, $token));
         
-        header("Location: ../templates/index.html");
+        header("Location: ../templates/index.php");
         die();
     }
     
     // User doesn't clicked on submit button
     else {
-        header("Location: ../templates/index.html");
+        header("Location: ../templates/index.php");
         die();
     }
 ?>

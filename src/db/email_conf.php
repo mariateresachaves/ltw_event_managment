@@ -12,7 +12,7 @@
 
     // User are not registered yet
 	if(empty($result)) {
-		header('Location: ../templates/user_notr.html');
+		header('Location: ../templates/user_notr.php');
 		die();
 	}
 

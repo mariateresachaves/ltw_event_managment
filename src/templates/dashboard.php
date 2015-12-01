@@ -2,6 +2,12 @@
     $db = new PDO('sqlite:../db/events.db');
 
     session_start();
+
+    if(!isset($_SESSION['login_user'])) {
+        header("Location: index.php");
+        die();
+    }
+
     $name = $_SESSION['name'];
     $username = $_SESSION['login_user'];
 
