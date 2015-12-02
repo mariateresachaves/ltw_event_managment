@@ -71,8 +71,8 @@
                 ?>
 
                     <div id="event">
-                        <img src="<?php echo "../" . $event['image']?>" alt="User Icon">
-                        <p><?php echo $event['name']; ?></p>
+                        <a href="event.php"><img src="<?php echo "../" . $event['image']?>" alt="User Icon"></a>
+                        <a href="event.php"><p><?php echo $event['name']; ?></p></a>
                     </div>
 
                 <?php      
