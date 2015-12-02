@@ -47,7 +47,8 @@ html, body {
     margin: 0;
     margin-left: 25px;
     z-index: 1;
-    transform: translate(0, 15px);
+    transform: translate(0, -5px);
+    display: inline-block;
 }
 
 .container > #rightContainer > #rightContainerMenuBackground {
@@ -191,9 +192,10 @@ html, body {
 
 #rightContainer > #rightContainerMenu > h3 {
     margin-right: 50px;
-    display: inline;
 }
 
-#eventsInformation {
-    margin-top: 50px;
+#rightContainer > #rightContainerMenu > #comments, #rightContainer > #rightContainerMenu > #myEvents, #rightContainer > #rightContainerMenu > #activity {
+    margin-right: 50px;
+    display: inline-block;
+    cursor: pointer;
 }

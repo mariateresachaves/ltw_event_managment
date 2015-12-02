@@ -34,6 +34,7 @@
 	<head>
 		<title><?php echo $username?>'s profile</title>
         <link rel="stylesheet" href="../css/style6.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	</head> 
 	<body>
         <div id="menuBackground">
@@ -85,9 +86,15 @@
                 <div id="rightContainerMenuBackground">
                 </div>
                 <div id="rightContainerMenu">
-                    <h3>Comments</h3>
-                    <h3>My events</h3>
-                    <h3>Activity</h3>
+                    <div id="comments" onclick="clickComments()">
+                        <h3>Comments</h3>
+                    </div>
+                    <div id="myEvents" onclick="clickMyEvents()">
+                        <h3>My events</h3>
+                    </div>
+                    <div id="activity" onclick="clickActivity()">
+                        <h3>Activity</h3>
+                    </div>
                 </div>
                 
                 <div id="eventsInformation">
@@ -99,5 +106,79 @@
                 </div>
             </div>
         </div>
+        
+        <script>
+            function clickComments() {
+                var user_exists = $.ajax({
+                    type: "POST",
+                    url: "../db/profileComments.php",
+                    cache: false,
+                    async: false,
+                    data: "",
+                    dataType: "json",
+                    success: function(data) {
+                                // data exists
+                                if(data) {
+                                    document.getElementById("rightContainer").innerHTML=data;
+                                }
+                            
+                                // data does not exists
+                                else
+                                    alert("There are no events of that type.");
+                            },
+                    error: function() {
+                                alert("error");
+                            }
+                });
+            }
+            
+            function clickMyEvents() {
+                var user_exists = $.ajax({
+                    type: "POST",
+                    url: "../db/profileMyEvents.php",
+                    cache: false,
+                    async: false,
+                    data: "",
+                    dataType: "json",
+                    success: function(data) {
+                                // data exists
+                                if(data) {
+                                    document.getElementById("rightContainer").innerHTML=data;
+                                }
+                            
+                                // data does not exists
+                                else
+                                    alert("There are no events of that type.");
+                            },
+                    error: function() {
+                                alert("error");
+                            }
+                });
+            }
+            
+            function clickActivity() {
+                var user_exists = $.ajax({
+                    type: "POST",
+                    url: "../db/profileActivity.php",
+                    cache: false,
+                    async: false,
+                    data: "",
+                    dataType: "json",
+                    success: function(data) {
+                                // data exists
+                                if(data) {
+                                    document.getElementById("rightContainer").innerHTML=data;
+                                }
+                            
+                                // data does not exists
+                                else
+                                    alert("There are no events of that type.");
+                            },
+                    error: function() {
+                                alert("error");
+                            }
+                });
+            }
+        </script>
 	</body>
 </html>
