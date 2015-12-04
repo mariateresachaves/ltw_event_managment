@@ -24,6 +24,7 @@ CREATE TABLE events (
 	image VARCHAR,
 	event_date DATE,
 	description TEXT,
+    visibility INTEGER, -- 0-> Public 1-> Private
     PRIMARY KEY (id_event),
     FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE ON UPDATE CASCADE
 );

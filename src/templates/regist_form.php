@@ -12,6 +12,7 @@
     <head>
         <title>Register your account</title>
         <link rel="stylesheet" href="../css/style2.css">
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     </head>
     <body>
         <div class="menu">
@@ -51,5 +52,11 @@
                 <input id="submit" type="submit" name="submit" value="Sign Up"/>
             </form>
         </div>
+            
+        <script>
+            $(document).ready(function()) {
+                
+            }
+        </script>    
     </body>
 </html>

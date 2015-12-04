@@ -27,6 +27,7 @@
 		<title>Event management</title>
         <link rel="stylesheet" href="../css/style4.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 	</head>
 	<body>
         <div id="menuBackground">
@@ -182,6 +183,44 @@
                                 alert("error");
                             }
                 });
+            }
+            
+             $.fn.MessageBox = function(id_event, going) {
+                changeGoing(id_event, going);
+            };
+            
+            function changeGoing(str) {
+                
+                var splitedStr = str.split(",");
+                var id = splitedStr[0];
+                var g = splitedStr[1];
+                
+                var index = "id_event=" + id;
+                var status = "&going=" + g;
+                var index2 = index + status;
+                
+                var status = $.ajax({
+                    type: "POST",
+                    url: "../db/changeGoing.php",
+                    cache: false,
+                    async: false,
+                    data: index2,
+                    dataType: "json",
+                    success: function(data) {
+                                // data exists
+                                if(data) {
+                                    document.getElementById(id).value=data[0];
+                                    document.getElementById("userEvents").innerHTML = data[1];
+                                }
+                                // data does not exists
+                                else
+                                    alert("An error occurred");
+                            },
+                    error: function() {
+                                alert("error");
+                            }
+                });
+                return false;
             }
         </script>
 	</body>
