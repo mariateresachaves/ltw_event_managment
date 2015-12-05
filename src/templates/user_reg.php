@@ -6,8 +6,6 @@
         die();
     }
 ?>
-
-<!DOCTYPE html>
 <html>
     <head>
         <title>Success registering</title>

@@ -3,11 +3,15 @@
     include_once('connection.php');
 
     $event_name = $_POST["event_name"];
-    $image = $_FILES["image"];
+    $event_image_id = $_POST["event_image"];
     $event_description = $_POST["event_description"];
     $event_date = $_POST["event_date"];
     $event_type = $_POST["event_type"];
     $event_id = $_POST["event_id"];
+	
+	$stmt = $db->prepare("SELECT link FROM events_images WHERE id_events_images=".$event_image_id);
+	$stmt->execute();
+	$result = $stmt->fetchAll();
 
     if(isset($event_name))
     {
@@ -15,37 +19,41 @@
         $stmt_1->execute();
     }
 
-    if(!(empty($_FILES["image"]["name"])))
-    {
-        $target_dir = "../imgs/";
-		$target_file = $target_dir.$_SESSION['login_user'].basename($_FILES["image"]["name"]);
-		$uploadOk = 1;
-		$imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+	if(isset($event_image))
+	{
+		$stmt_2 = $db->prepare("UPDATE events SET image='".$result[0][0]."' WHERE id_event=".$event_id);
+		$stmt_2->execute();
+	}
+	
+	
 
-    // Check if image file is a actual image or fake image
-		if(isset($_POST["submit"]))
-		{
-			$check = getimagesize($_FILES["image"]["tmp_name"]);
-			if($check !== false)
-				$uploadOk = 1;
-			else
-				$uploadOk = 0;
-		}
-  
-		if($uploadOk == 0)
-		{
-			echo "Sorry, your file was not uploaded.";
-		}
-		else
-		{
-			if (!(move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)))
-				echo "Sorry, there was an error uploading your file.";
-		}
-		
-        $stmt_2 = $db->prepare("UPDATE events SET image='".$target_file."'WHERE id_event=".$event_id);
-        $stmt_2->execute();
-    }
-
+	//Loop through each file
+	for($i = 0; $i < count($_FILES['event_images']['name']); $i++) 
+	{
+			if($_FILES['event_images']['error'][$i] == UPLOAD_ERR_OK)
+			{	
+				//Get the temp file path
+				$tmpFilePath = $_FILES['event_images']['tmp_name'][$i];
+				
+				//Make sure we have a filepath
+				if ($tmpFilePath != "")
+				{
+					//Setup our new file path
+					$newFilePath = "../imgs/".$_SESSION['login_user']."/".$event_name."/".basename($_FILES['event_images']['name'][$i]);
+					
+					//Upload the file into the temp dir
+					if (!(move_uploaded_file($tmpFilePath, $newFilePath)))
+						echo "Sorry, there was an error uploading your file.";
+				}
+				
+				$null = NULL;
+				$stmt_2 = $db->prepare("INSERT INTO events_images (id_events_images, link, id_event) VALUES (:id_events_images, :link, :id_event)");
+				$stmt_2->bindParam(':id_events_images', $null);
+				$stmt_2->bindParam(':link', $newFilePath);
+				$stmt_2->bindParam(':id_event', $event_id);
+				$stmt_2->execute();
+			}
+	}
     if(isset($event_description))
     {
         $stmt_3 = $db->prepare("UPDATE events SET description='".$event_description."'WHERE id_event=".$event_id);
@@ -58,7 +66,7 @@
         $stmt_4->execute();
     }
 
-    if(isset($event_description))
+    if(isset($event_type))
     {
         $stmt_5 = $db->prepare("UPDATE events SET id_events_types='".$event_type."'WHERE id_event=".$event_id);
         $stmt_5->execute();

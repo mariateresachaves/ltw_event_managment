@@ -27,7 +27,7 @@
         $information .= "<div id=\"information\">
                             <div id=\"informationLeft\">
                                 <div id=\"informationImg\">
-                                    <img src=\"../" . $event['image'] . "\" alt=\"Event Image\">
+                                    <img src=\"" . $event['image'] . "\" alt=\"Event Image\">
                                 </div>
                             </div>
                                 

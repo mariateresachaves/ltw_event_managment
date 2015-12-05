@@ -6,16 +6,19 @@
     $stmt_1->execute();
     $result_1 = $stmt_1->fetchAll();
 
-    $stmt_2 = $db->prepare('SELECT name, image, event_date, description FROM events WHERE id_event='.$_GET["event_id"]);
+    $stmt_2 = $db->prepare('SELECT name, event_date, description FROM events WHERE id_event='.$_GET["event_id"]);
     $stmt_2->execute();
     $result_2 = $stmt_2->fetchAll();
+	
+	$stmt_3 = $db->prepare('SELECT id_events_images, link FROM events_images WHERE id_event='.$_GET["event_id"]);
+	$stmt_3->execute();
+	$result_3 = $stmt_3->fetchAll();
 
     foreach($result_2 as $event_rows)
     {
         $event_name = $event_rows[0];
-        $image = $event_rows[1];
-        $event_date = $event_rows[2];
-        $description = $event_rows[3];
+        $event_date = $event_rows[1];
+        $description = $event_rows[2];
     }
 ?>
 <html>
@@ -29,9 +32,19 @@
         <label for="event_name"><br>Name of your event:<br></label>
         <input name="event_name" type="text" value="<?php echo $event_name ?>">
 
-        <label for="image"><br>Pick an image for your event:<br></label>
-        <input id="image" type="file" name="image">
-
+        <label for="event_image"><br>Pick the profile image for your event:<br></label>
+		<select id="event_image" name="event_image" form="modify_event">
+            <?php
+            foreach($result_3 as $event_image)
+            {
+                echo '<option value='.$event_image['id_events_images'].'>'.$event_image['link'].'</option>';
+            }
+            ?>
+        </select>
+		
+		<label for="event_images"><br>Upload more images related to your event:<br></label>
+		<input id="event_images" type="file" name="event_images[]" multiple>
+        
         <label for="event_description"><br>Description of your event:<br></label>
 		<textarea name="event_description" form="modify_event" required ROWS=6 COLS=40><?php echo $description?></textarea>
 

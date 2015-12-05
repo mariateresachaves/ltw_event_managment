@@ -17,7 +17,7 @@
         <label for="event_name"><br>Name of your event:<br></label>
         <input id="event_name" type="name" name="event_name" placeholder="Choose a name for your event!">
 
-        <label for="image"><br>Pick an image for your event:<br></label>
+        <label for="image"><br>Pick the profile image for your event:<br></label>
         <input id="image" type="file" name="image">
 
 		<label for="event_description"><br>Description of your event:<br></label>

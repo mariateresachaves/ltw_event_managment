@@ -47,6 +47,7 @@
             
             <div id="right">
                 <div id="search">
+					<a href="log_out.php">LOG OUT</a>
                     <form onsubmit="return searchEvent()" id="form1">
                         <input type="text" name="search" id="searchBar" placeholder="Search">
                         <input type="submit" value id="searchButton">
@@ -73,7 +74,7 @@
                 ?>
 
                     <div id="event">
-                        <a href="event.php"><img src="<?php echo "../" . $event['image']?>" alt="User Icon"></a>
+                        <a href="event.php"><img src="<?php echo $event['image']?>" alt="User Icon"></a>
                         <a href="event.php"><p><?php echo $event['name']; ?></p></a>
                     </div>
 
