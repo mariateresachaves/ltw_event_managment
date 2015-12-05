@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include_once('connection.php');
+    $db = new PDO('sqlite:../db/events.db');
 
     $stmt_1 = $db->prepare("SELECT * FROM events_types");
     $stmt_1->execute();
@@ -25,7 +25,7 @@
   </head>
   <body>
     <h1>Modify your event</h1>
-    <form id="modify_event" action="../modify_event_submit.php" method="post" enctype="multipart/form-data">
+    <form id="modify_event" action="../db/modify_event_submit.php" method="post" enctype="multipart/form-data">
         <label for="event_name"><br>Name of your event:<br></label>
         <input name="event_name" type="text" value="<?php echo $event_name ?>">
 

@@ -29,7 +29,7 @@
                                 <div id=\"rightFooter\">
                                     <div id=\"eventJoin\">
                                         <form>
-                                            <input type=\"submit\" name=\"join\" value=\"Join\" id=\"join\"/>
+                                            <input type=\"submit\" name=\"going\" value=\"Going\" class=\"going\"/>
                                         </form>
                                     </div>
 

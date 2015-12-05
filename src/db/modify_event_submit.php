@@ -17,7 +17,7 @@
 
     if(!(empty($_FILES["image"]["name"])))
     {
-		 $target_dir = "../imgs/";
+        $target_dir = "../imgs/";
 		$target_file = $target_dir.$_SESSION['login_user'].basename($_FILES["image"]["name"]);
 		$uploadOk = 1;
 		$imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);

@@ -66,3 +66,14 @@ CREATE TABLE comments (
 -- INSERT INTO events (id_event, username, name, image, event_date, description, id_events_types) VALUES (NULL, 'naodameu', 'Christmas', 'images/stupidstuff.jpg', '2015-12-25', 'MERRY CHRISTMAS HO HO HO!', 1);
 -- INSERT INTO comments (username, id_event, text) VALUES ('naodameu', 1, 'OMG CHRISTMAS IS GOING TO BE ROCKIN!');
 
+-- onclick=\"$(this).Click('" . $event['id_event'] . ", " . $going . "')\">
+-- $.fn.Click = function(id_event, going) {
+--                    changeGoing(id_event, going);
+--                };
+
+-- 
+--            $(document).ready(function() {
+--                $('.eventForm').on('click','.going',function() {
+--                    alert("HEllo");
+--                });
+--            });

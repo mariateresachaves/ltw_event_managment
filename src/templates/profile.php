@@ -102,7 +102,7 @@
                 </div>
 
                 <div id="createEvent">
-                    <a href="../db/create_event.php"><h3>CREATE AN EVENT</h3></a>
+                    <a href="create_event.php"><h3>CREATE AN EVENT</h3></a>
                 </div>
             </div>
         </div>
