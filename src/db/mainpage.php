@@ -2,29 +2,17 @@
 	include_once('connection.php');
 	
 	$username = $_POST["username"];
-	$password = md5($_POST["password"]);
 
-    // Verifies if this user exists in the database
-
-	$stmt = $db->prepare("SELECT name, username, password FROM users WHERE username=? AND password=?");
-	$stmt->execute(array($username, $password));
-	$result = $stmt->fetchAll();
-
-    // User is not registered
-	if(empty($result)) {
-		header('Location: ../templates/user_notr.php');
-		die();
-	}
-
+	$signin = $db->prepare("SELECT name, username FROM users WHERE username = ?");
+	$signin->execute(array($username));
+	$result = $signin->fetchAll();
+	
     // User is registered
-	else {
-		session_start();
+	session_start();
         
-        $name = $result[0][0];
-		$_SESSION['login_user'] = $username;
-        $_SESSION['name'] = $name;
+    $name = $result[0][0];
+	$_SESSION['login_user'] = $username;
+    $_SESSION['name'] = $name;
         
-        header('Location: ../templates/dashboard.php');
-		die();
-	}
-?>
+    header('Location: ../templates/dashboard.php');
+	die();

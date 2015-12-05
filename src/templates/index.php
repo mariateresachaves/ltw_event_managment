@@ -54,13 +54,12 @@
                                     if(data == "false")
                                         alert("Username or password incorrect!");
                                 }
-                            
                                 // data does not exist
                                 else
                                     alert("An error occurred.");
                             },
                     error: function() {
-                                alert("error");
+                                alert("Error!");
                             }
                 });
             

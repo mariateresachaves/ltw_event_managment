@@ -1,9 +1,20 @@
 <?php
 	include_once('connection.php');
-    // Verifies if this username already exists in the database
-	$stmt_1 = $db->prepare("SELECT username FROM users WHERE username=?");
-	$stmt_1->execute(array($_POST["username"]));  
-	$result = $stmt_1->fetchAll();
+		
+	$username = $_POST["username"];
+	$name = $_POST["name"];
+	$password = $_POST["password"];
+	$email = $_POST["email"];
+	$birthdate = $_POST["birthdate"];
+	$gender = $_POST["gender"];
+	
+	$passwordh = password_hash($password, PASSWORD_DEFAULT);
+	
+	// Verifies if this username already exists in the database
+	$username_check = $db->prepare("SELECT username FROM users WHERE username=?");
+	$username_check->execute(array($_POST["username"]));  
+	$result = $username_check->fetchAll();
+	
 	// username already exists
 	if(!empty($result)) {
 		header('Location: ../templates/user_already_taken.php');
@@ -11,17 +22,21 @@
 	}
     // username can be used
 	else {
-		$stmt_2 = $db->prepare('INSERT INTO users (username, name, password, email, birthdate, gender) VALUES (:username, :name, :password, :email, :birthdate, :gender)');
-		$stmt_2->bindParam(':username', $_POST["username"]);
-		$stmt_2->bindParam(':name', $_POST["name"]);
-		$hpassword = md5($_POST["password"]);
-		$stmt_2->bindParam(':password', $hpassword);
-		$stmt_2->bindParam(':email', $_POST["email"]);
-		$stmt_2->bindParam(':birthdate', $_POST["birthdate"]);
-		$stmt_2->bindParam(':gender', $_POST["gender"]);
-		$stmt_2->execute();
+		$user = $db->prepare('INSERT INTO users (username, name, password, email, birthdate, gender) VALUES (:username, :name, :password, :email, :birthdate, :gender)');
+		$user->bindParam(':username', $username);
+		$user->bindParam(':name', $name);
+		$user->bindParam(':password', $passwordh);
+		$user->bindParam(':email', $email);
+		$user->bindParam(':birthdate', $birthdate);
+		$user->bindParam(':gender', $birthdate);
+		$user->execute();
+		
+		$stmt = $db->prepare('SELECT * FROM users');
+		$stmt->execute();
+		$result = $stmt->fetchAll();
+		
+		var_dump($result);
         
-		header('Location:../templates/user_reg.php');
+		header('Location: ../templates/user_reg.php');
 		die();
 	}
-?>
