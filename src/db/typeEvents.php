@@ -49,7 +49,7 @@
                                     </div>
 
                                     <div id=\"eventOwner\">
-                                        <p>" . $event['username'] . "</p>
+                                        <p>" . $event['event_date'] . "</p>
                                     </div>
                                 </div>
                             </div>
