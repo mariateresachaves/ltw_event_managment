@@ -79,8 +79,8 @@
                             list($r_date, $r_hour) = explode(" ", $registdate[0]);
                         ?>
                         <p>member since <br> <?php echo $r_date?></p>
-                        <form>
-                            <input type="button" value="Edit Profile" id="editProfile" onclick="">
+                        <form onsubmit="return editProfile()">
+                            <input type="submit" value="Edit Profile" id="editProfile">
                         </form>
                     </div>
                 </div>
@@ -129,6 +129,30 @@
         </div>
         
         <script>
+            function editProfile() {
+                var user_exists = $.ajax({
+                    type: "POST",
+                    url: "../db/editProfile.php",
+                    cache: false,
+                    async: false,
+                    data: "",
+                    dataType: "json",
+                    success: function(data) {
+                                // data exists
+                                if(data) {
+                                    document.getElementById("eventsInformation").innerHTML=data;
+                                }
+                            
+                                // data does not exists
+                                else
+                                    alert("An error occured.");
+                            },
+                    error: function() {
+                                alert("error");
+                            }
+                });
+            }
+            
             function clickMyEvents() {
                 var user_exists = $.ajax({
                     type: "POST",
