@@ -7,6 +7,7 @@
     $event_description = $_POST["event_description"];
     $event_date = $_POST["event_date"];
     $event_type = $_POST["event_type"];
+	$event_privacy = $_POST["event_privacy"];
     $event_id = $_POST["event_id"];
 	
 	$stmt = $db->prepare("SELECT link FROM events_images WHERE id_events_images = ?");
@@ -72,6 +73,12 @@
         $stmt_5 = $db->prepare("UPDATE events SET id_events_types = '?' WHERE id_event = ?");
         $stmt_5->execute(array($event_type, $event_id));
     }
+	
+	if(isset($event_privacy))
+	{
+		$stmt_6 = $db->prepare("UPDATE events SET visibility = ? WHERE id_event = ?");
+		$stmt_6->execute(array($event_privacy, $event_id));
+	}
 
     if($_POST["delete_event"] == "Yes")
     {

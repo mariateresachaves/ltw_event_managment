@@ -35,6 +35,13 @@
                 }
             ?>
         </select>
+		
+		<label for="event_privacy"><br>Privacy of your event:<br></label>
+        <div id="event_privacy">
+            <input type="radio" name="event_privacy" value=0 checked required> Public
+            <input type="radio" name="event_privacy" value=1 required> Private
+        </div>
+		
         <br><br><input id="submit" type="submit" name="submit" value="Submit your event"/>
     </form>
   </body>

@@ -9,7 +9,7 @@
     $stmt_1->execute();
     $result_1 = $stmt_1->fetchAll();
 
-    $stmt_2 = $db->prepare('SELECT name, event_date, description FROM events WHERE id_event = ?');
+    $stmt_2 = $db->prepare('SELECT name, event_date, description, visibility FROM events WHERE id_event = ?');
     $stmt_2->execute(array($event_id));
     $result_2 = $stmt_2->fetchAll();
 	
@@ -22,7 +22,9 @@
         $event_name = $event_rows[0];
         $event_date = $event_rows[1];
         $description = $event_rows[2];
+		$event_privacy = $event_rows[3];
     }
+	var_dump($event_privacy);
 ?>
 <html>
   <head>
@@ -63,13 +65,19 @@
             }
             ?>
         </select>
+		
+		<label for="event_privacy"><br>Privacy of your event:<br></label>
+        <div id="event_privacy">
+            <input type="radio" name="event_privacy" value=0 <?php echo ($event_privacy == '0')?'checked':'' ?> required> Public
+            <input type="radio" name="event_privacy" value=1 <?php echo ($event_privacy == '1')?'checked':'' ?> required> Private
+        </div>
 
 		<label for="delete_event"><br> Delete event?<br></label>
         <div id="delete_event">
             <input type="radio" name="delete_event" value="Yes" required> Yes
             <input type="radio" name="delete_event" value="No" checked required> No
         </div>
-
+		
         <input type="hidden" name="event_id" value="<?php echo $event_id?>">
 
         <br><input id="submit" type="submit" name="submit" value="Submit your changed event"/>

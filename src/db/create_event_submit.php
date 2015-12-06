@@ -6,6 +6,7 @@
 	$event_type = $_POST["event_type"];
 	$event_date = $_POST["event_date"];
 	$event_description = $_POST["event_description"];
+	$event_privacy = $_POST["event_privacy"];
 	$null = NULL;
 
     $target_dir = "../imgs/".$_SESSION['login_user']."/".$event_name."/"; // Directory where the profile image for the event will be saved
@@ -31,7 +32,7 @@
   
 	// Insert the data obtained through POST method into the database regarding the event
     
-    $stmt = $db->prepare('INSERT INTO events (id_event, username, id_events_types, name, image, event_date, description) VALUES (:id_event, :username, :id_events_types, :name, :image, :event_date, :description)');
+    $stmt = $db->prepare('INSERT INTO events (id_event, username, id_events_types, name, image, event_date, description, visibility) VALUES (:id_event, :username, :id_events_types, :name, :image, :event_date, :description, :visibility)');
     $stmt->bindParam(':id_event', $null);
     $stmt->bindParam(':username', $_SESSION['login_user']);
     $stmt->bindParam(':id_events_types', $event_type);
@@ -39,6 +40,8 @@
     $stmt->bindParam(':image', $target_file);
     $stmt->bindParam(':event_date', $event_date);
     $stmt->bindParam(':description', $event_description);
+	$stmt->bindParam(':visibility', $event_privacy);
+	
     $stmt->execute();
 ?>
 <html>
