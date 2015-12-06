@@ -1,33 +1,25 @@
 <?php
     $db = new PDO('sqlite:../db/events.db');
-
     session_start();
-
     if(!isset($_SESSION['login_user'])) {
         header("Location: index.php");
         die();
     }
-
     $name = $_SESSION['name'];
     $username = $_SESSION['login_user'];
-
     $stmt = $db->prepare("SELECT name, image, events.id_event FROM events, participations WHERE events.id_event=participations.id_event 
                                                                                AND participations.username=?");
 	$stmt->execute(array($username));
 	$events = $stmt->fetchAll();
-
     $stmt2 = $db->prepare("SELECT events.*, events_types.name AS eventName FROM events, events_types WHERE events.id_event=? AND events.id_events_types=events_types.id_events_types");
 	$stmt2->execute(array($_GET['event_id']));
 	$event_selected = $stmt2->fetch();
-
     $stmt3 = $db->prepare("SELECT text, username FROM comments WHERE id_event=?");
     $stmt3->execute(array($_GET['event_id']));
 	$event_comments = $stmt3->fetchAll();
-
     $stmt4 = $db->prepare("SELECT id_event FROM participations WHERE participations.username=? AND id_event=?");
 	$stmt4->execute(array($_SESSION['login_user'], $_GET['event_id']));
 	$user_participations = $stmt4->fetch();
-
     if(!empty($user_participations))
         $going = "Not Going";
     else
@@ -41,22 +33,13 @@
         <link rel="stylesheet" href="../css/style7.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-		<meta property="og:url"           content="<?php echo "http://localhost/ltw_event_managment/src/templates/event.php?event_id=".$_GET["event_id"]?>" />
+		<meta property="og:url" content="<?php echo "http://localhost/ltw_event_managment/src/templates/event.php?event_id=".$_GET["event_id"]?>" />
 		<meta property="og:type"          content="website" />
 		<meta property="og:title"         content="Event Management" />
 		<meta property="og:description"   content="<?php echo $event_selected['description'] ?>" />
 		<meta property="og:image"         content="<?php echo $event_selected['image'] ?>" />
 	</head> 
 	<body>
-		<div id="fb-root"></div>
-		<script>(function(d, s, id) {
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id)) return;
-			js = d.createElement(s); js.id = id;
-			js.src = "//connect.facebook.net/pt_PT/sdk.js#xfbml=1&version=v2.5";
-			fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk'));
-		</script>
 		<div id="menuBackground">
         </div>
         
@@ -120,12 +103,6 @@
                 <div id="event_date">
                     <?php echo $event_selected['event_date'];?>
                 </div>
-				<div class="fb-share-button" data-href=<?php echo "http://localhost/ltw_event_managment/src/templates/event.php?event_id=".$_GET['event_id']?> data-layout="button"></div>
-				<a href="<?php echo "mailto:?subject=I wanted you to check out this event&amp;body=Check out event "."http://localhost/ltw_event_managment/src/templates/event.php?event_id=".$_GET['event_id']."."; ?>" 
-				title="Share this event by email!">
-					<img src="http://png-2.findicons.com/files/icons/573/must_have/48/mail.png">
-				</a>
-            </div>
             </div>
             <div id="event_image">
                 <img src="<?php echo $event_selected['image'];?>">
@@ -142,6 +119,11 @@
                         <input type="button" name="going" value="<?php echo $going ?>" class="going" id="<?php echo $event_selected['id_event'] ?>">
                     </form>
             </div>
+            <div class="fb-share-button" data-href=<?php echo "http://localhost/ltw_event_managment/src/templates/event.php?event_id=".$_GET['event_id']?> data-layout="button"></div>
+				<a href="<?php echo "mailto:?subject=I wanted you to check out this event&amp;body=Check out event "."http://localhost/ltw_event_managment/src/templates/event.php?event_id=".$_GET['event_id']."."; ?>" 
+				title="Share this event by email!">
+					<img src="http://png-2.findicons.com/files/icons/573/must_have/48/mail.png">
+				</a>
             <div id="event_comments">
                 <hr>
                 <h2>Comments</h2>
@@ -172,15 +154,20 @@
         </div>
         
         <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/pt_PT/sdk.js#xfbml=1&version=v2.5";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+            
         var j = jQuery.noConflict();
         j(document).ready(function(){
-
             j(document).on("click", ".going", function(event){
-
                 var id_event = "id_event=" + event.target.id;
                 var status = "&going=" + event.target.value;
                 var index2 = id_event + status;
-
                     var status = $.ajax({
                     type: "POST",
                     url: "../db/changeGoing.php",
@@ -205,7 +192,7 @@
             });
         });
             
-        $("#add_comment").on("click", "#publish", function() {
+        $("#add_comment").on("click", "#publish", function() {
             var id_event = $("#id_event").val();
             var comment = "comment=" + document.getElementById("comment_description").value;
             var index = comment + "&id_event=" + id_event;
@@ -237,7 +224,6 @@
         $("textarea").keyup(function (e) {
             autoheight(this);
         });
-
         function autoheight(a) {
             if (!$(a).prop('scrollTop')) {
                 do {
@@ -249,7 +235,6 @@
             };
             $(a).height($(a).prop('scrollHeight'));
         }
-
         autoheight($("textarea"));
         </script>
 	</body>
