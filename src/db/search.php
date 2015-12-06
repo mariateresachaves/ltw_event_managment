@@ -6,7 +6,7 @@
 
     $name = $_GET['name'];
 
-    $stmt = $db->prepare("SELECT * FROM events WHERE name LIKE ?");
+    $stmt = $db->prepare("SELECT * FROM events WHERE name LIKE ? AND visibility = 0");
 	$stmt->execute(array("%" . $name . "%"));
 	$events = $stmt->fetchAll();
 
