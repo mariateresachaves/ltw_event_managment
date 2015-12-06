@@ -27,8 +27,6 @@
 	$stmt5 = $db->prepare("SELECT link FROM events_images WHERE id_event = ?");
 	$stmt5->execute(array($_GET['event_id']));
 	$image_links = $stmt5->fetchALL();
-	
-	var_dump($image_links)
 ?>
 
 <!DOCTYPE html>
