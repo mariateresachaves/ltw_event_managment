@@ -160,12 +160,12 @@
                     success: function(data) {
                                 // data exists
                                 if(data) {
-                                    document.getElementById("rightContainer").innerHTML=data;
+                                    document.getElementById("eventsInformation").innerHTML=data;
                                 }
                             
                                 // data does not exists
                                 else
-                                    alert("There are no events of that type.");
+                                    alert("You are not going to any event.");
                             },
                     error: function() {
                                 alert("error");
