@@ -94,6 +94,9 @@
                     <div id="activity" onclick="clickActivity()">
                         <h3>Activity</h3>
                     </div>
+                    <div id="createEvent">
+                        <a href="create_event.php"><h3>Create an event</h3></a>
+                    </div>
                 </div>
                 
                 <div id="eventsInformation">
