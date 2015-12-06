@@ -26,7 +26,9 @@
         $going = "Going";
 	$stmt5 = $db->prepare("SELECT link FROM events_images WHERE id_event = ?");
 	$stmt5->execute(array($_GET['event_id']));
-	$image_links = $stmt5->fetch();
+	$image_links = $stmt5->fetchALL();
+	
+	var_dump($image_links)
 ?>
 
 <!DOCTYPE html>
@@ -130,7 +132,7 @@
 			<div id="event_images">
 				<?php foreach($image_links as $image_link)
 				{
-					echo '<a href="'.$image_link.'">'.$image_link.'</a><br>';
+					echo '<a href="'.$image_link['link'].'">'.$image_link['link'].'</a><br>';
 				}?>		
 			</div>	
             <div id="event_comments">
