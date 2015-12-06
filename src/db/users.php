@@ -15,7 +15,8 @@
 		$stmt_2 = $db->prepare('INSERT INTO users (username, name, password, email, birthdate, gender) VALUES (:username, :name, :password, :email, :birthdate, :gender)');
 		$stmt_2->bindParam(':username', $_POST["username"]);
 		$stmt_2->bindParam(':name', $_POST["name"]);
-		$hpassword = password_hash($_POST["password"], PASSWORD_DEFAULT);
+        // $password = md5($_POST["password"]);
+        $hpassword = password_hash($_POST["password"], PASSWORD_DEFAULT);
 		$stmt_2->bindParam(':password', $hpassword);
 		$stmt_2->bindParam(':email', $_POST["email"]);
 		$stmt_2->bindParam(':birthdate', $_POST["birthdate"]);
