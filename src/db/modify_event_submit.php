@@ -9,20 +9,20 @@
     $event_type = $_POST["event_type"];
     $event_id = $_POST["event_id"];
 	
-	$stmt = $db->prepare("SELECT link FROM events_images WHERE id_events_images=".$event_image_id);
-	$stmt->execute();
+	$stmt = $db->prepare("SELECT link FROM events_images WHERE id_events_images = ?");
+	$stmt->execute(array($event_image_id));
 	$result = $stmt->fetchAll();
 
     if(isset($event_name))
     {
-        $stmt_1 = $db->prepare("UPDATE events SET name='".$event_name."' WHERE id_event=".$event_id);
-        $stmt_1->execute();
+        $stmt_1 = $db->prepare("UPDATE events SET name = '?' WHERE id_event = ?");
+        $stmt_1->execute(array($event_name, $event_id));
     }
 
 	if(isset($event_image))
 	{
-		$stmt_2 = $db->prepare("UPDATE events SET image='".$result[0][0]."' WHERE id_event=".$event_id);
-		$stmt_2->execute();
+		$stmt_2 = $db->prepare("UPDATE events SET image = '?' WHERE id_event = ?");
+		$stmt_2->execute(array($result[0][0], $event_id));
 	}
 	
 	
@@ -46,6 +46,7 @@
 						echo "Sorry, there was an error uploading your file.";
 				}
 				
+				// Insert new images associated to event in events_images table
 				$null = NULL;
 				$stmt_2 = $db->prepare("INSERT INTO events_images (id_events_images, link, id_event) VALUES (:id_events_images, :link, :id_event)");
 				$stmt_2->bindParam(':id_events_images', $null);
@@ -56,26 +57,26 @@
 	}
     if(isset($event_description))
     {
-        $stmt_3 = $db->prepare("UPDATE events SET description='".$event_description."'WHERE id_event=".$event_id);
-        $stmt_3->execute();
+        $stmt_3 = $db->prepare("UPDATE events SET description = '?' WHERE id_event = ?");
+        $stmt_3->execute(array($event_description, $event_id));
     }
 
     if(isset($event_date))
     {
-        $stmt_4 = $db->prepare("UPDATE events SET event_date='".$event_date."'WHERE id_event=".$event_id);
-        $stmt_4->execute();
+        $stmt_4 = $db->prepare("UPDATE events SET event_date = '?' WHERE id_event = ?");
+        $stmt_4->execute(array($event_date, $event_id));
     }
 
     if(isset($event_type))
     {
-        $stmt_5 = $db->prepare("UPDATE events SET id_events_types='".$event_type."'WHERE id_event=".$event_id);
-        $stmt_5->execute();
+        $stmt_5 = $db->prepare("UPDATE events SET id_events_types = '?' WHERE id_event = ?");
+        $stmt_5->execute(array($event_type, $event_id));
     }
 
     if($_POST["delete_event"] == "Yes")
     {
-        $stmt_6 = $db->prepare('DELETE FROM events WHERE id_event='.$event_id);
-        $stmt_6->execute();
+        $stmt_6 = $db->prepare('DELETE FROM events WHERE id_event = ?');
+        $stmt_6->execute(array($event_id));
     }
 ?>
 <html>

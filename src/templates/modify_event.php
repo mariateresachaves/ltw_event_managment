@@ -1,17 +1,20 @@
 <?php
     session_start();
     $db = new PDO('sqlite:../db/events.db');
+	
+	$event_id = $_GET["event_id"];
 
+	// Stat
     $stmt_1 = $db->prepare("SELECT * FROM events_types");
     $stmt_1->execute();
     $result_1 = $stmt_1->fetchAll();
 
-    $stmt_2 = $db->prepare('SELECT name, event_date, description FROM events WHERE id_event='.$_GET["event_id"]);
-    $stmt_2->execute();
+    $stmt_2 = $db->prepare('SELECT name, event_date, description FROM events WHERE id_event = ?');
+    $stmt_2->execute(array($event_id));
     $result_2 = $stmt_2->fetchAll();
 	
-	$stmt_3 = $db->prepare('SELECT id_events_images, link FROM events_images WHERE id_event='.$_GET["event_id"]);
-	$stmt_3->execute();
+	$stmt_3 = $db->prepare('SELECT id_events_images, link FROM events_images WHERE id_event = ?');
+	$stmt_3->execute(array($event_id));
 	$result_3 = $stmt_3->fetchAll();
 
     foreach($result_2 as $event_rows)
@@ -67,7 +70,7 @@
             <input type="radio" name="delete_event" value="No" checked required> No
         </div>
 
-        <input type="hidden" name="event_id" value="<?php echo $_GET["event_id"]?>">
+        <input type="hidden" name="event_id" value="<?php echo $event_id?>">
 
         <br><input id="submit" type="submit" name="submit" value="Submit your changed event"/>
     </form>
