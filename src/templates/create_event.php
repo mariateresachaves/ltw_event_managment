@@ -18,7 +18,7 @@
         <input id="event_name" type="name" name="event_name" placeholder="Choose a name for your event!">
 
         <label for="image"><br>Pick the profile image for your event:<br></label>
-        <input id="image" type="file" name="image">
+        <input id="image" type="file" name="image" multiple>
 
 		<label for="event_description"><br>Description of your event:<br></label>
 		<textarea name="event_description" form="create_event" required ROWS=6 COLS=40 placeholder="Write a brief description of your event..."></textarea>

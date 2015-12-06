@@ -51,12 +51,6 @@
 				
                 <input id="submit" type="submit" name="submit" value="Sign Up"/>
             </form>
-        </div>
-            
-        <script>
-            $(document).ready(function()) {
-                
-            }
-        </script>    
+        </div>  
     </body>
 </html>

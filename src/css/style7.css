@@ -14,8 +14,9 @@ html, body {
 
 .container {
     margin: 0;
-    transform: translate(113%, 150px);
+	transform: translate(72%, 15%);
     position: absolute;
+    text-align: left;
 }
 
 .container > h1 {
@@ -214,118 +215,18 @@ html, body {
     margin-left: 35px;
 }
 
-#eventsInformation > .comboEvent > .eventBox1, #eventsInformation > .comboEvent > .eventBox2 {
+.container > #event_top {
     display: inline-block;
-    cursor: pointer;
+    width: 600px;
+
 }
 
-#eventsInformation > .comboEvent > .eventBox1 {
-    margin-bottom: 100px;
-    margin-left: 0;
-    margin-right: 100px;
-    background-color: #0e5d77;
-    width: 150px;
-    height: 79px;
-    padding-top: 66px;
-    box-shadow: 5px 5px 20px rgba(0,0,0,0.5);
-    text-align: center;
-}
-
-#eventsInformation > .comboEvent > .eventBox2 {
-    margin-bottom: 100px;
-    margin-right: 100px;
-    margin-left: 0;
-    background-color: #0e5d77;
-    width: 150px;
-    height: 79px;
-    padding-top: 66px;
-    box-shadow: 5px 5px 20px rgba(0,0,0,0.5);
-    text-align: center;
-}
-
-#eventsInformation > .comboEvent {
-    text-align: left;
-}
-
-#information {
-    display: block;
-    width: 520px;
-    height: 150px;
-    text-align: left;
-}
-
-#information > #informationLeft {
-    float: left;
-    width: 150px;
-    height: 150px;
-    background-color: red;
-}
-
-#information > #informationLeft > #informationImg > img{
-    width: 150px;
-    height: 150px;
-    background-color: white;
-}
-
-#information > #informationRight {
-    float: left;
-    margin-bottom: 50px;
-    padding-left: 15px;
-    width: 220px;
-    height: 150px;
-    display: block;
-    background-color: #0e5d77;
-    word-wrap: break-word;
-}
-
-#information > #informationRight > #rightFooter {
-    margin-top: 15px;
-    margin-bottom: 2px;
-}
-
-#information > #informationRight > #rightFooter > #eventOwner {
+.container > #event_top > #event_date {
+    margin-top: 25px;
     float: right;
-    padding-right: 15px;
-    margin-top: 5px;
+    font-size: 14px;
 }
 
-#information > #informationRight > #rightFooter > #eventJoin {
+.container > #event_top > #event_name {
     float: left;
-}
-
-#information > #informationRight > #rightFooter > #eventOwner > p {
-    margin: 0;
-}
-
-#information > #informationRight > #rightFooter > #eventJoin > form > .going {
-	background-color: white;
-    border-radius: 5px;
-    color: #00ccff;
-    font-size: 12px;
-    border: none;
-	display: block;
-	margin: 5px 0;
-	margin-top: 5px;
-	width: auto;
-    padding: 5px 10px;
-}
-
-#information > #informationRight > #rightFooter > #eventJoin > form > .going:hover {
-    border: none;
-    color: white;
-    background: #a6a6a6;
-    box-shadow: 0px 0px 1px #777;
-    cursor: pointer;
-}
-
-#thanks {
-    margin: 0;
-    position: absolute;
-    transform: translate(75%,120%);
-}
-
-#thanks > h1 {
-    margin-top: 0;
-    margin-bottom: 40px;
-    font-weight: 700;
 }

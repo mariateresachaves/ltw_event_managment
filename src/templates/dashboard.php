@@ -11,8 +11,8 @@
     $name = $_SESSION['name'];
     $username = $_SESSION['login_user'];
 
-    $stmt = $db->prepare("SELECT name, image FROM events, participations WHERE events.id_event=participations.id_event 
-                                                                               AND participations.username=?");
+    $stmt = $db->prepare("SELECT name, image, events.id_event FROM events, participations WHERE events.id_event=participations.id_event 
+                                                                                                AND participations.username=?");
 	$stmt->execute(array($username));
 	$events = $stmt->fetchAll();
 
@@ -47,11 +47,13 @@
             
             <div id="right">
                 <div id="search">
-					<a href="log_out.php">LOG OUT</a>
                     <form onsubmit="return searchEvent()" id="form1">
                         <input type="text" name="search" id="searchBar" placeholder="Search">
                         <input type="submit" value id="searchButton">
                     </form>
+                </div>
+                <div id="logout">
+                    <a href="log_out.php">LOGOUT</a>
                 </div>
             </div>
         </div>
@@ -62,7 +64,7 @@
         <div id="userProfile">
             <div id="profilePage">
                 <a href="profile.php"><img src="../imgs/user_avatar.png" alt="User Icon"></a>
-                <a href="profile.php"><p><?php echo $name ?></p></a>
+                <a href="profile.php"><p><?php echo $name; ?></p></a>
             </div>
             
             <hr>
@@ -74,8 +76,8 @@
                 ?>
 
                     <div id="event">
-                        <a href="event.php"><img src="<?php echo $event['image']?>" alt="User Icon"></a>
-                        <a href="event.php"><p><?php echo $event['name']; ?></p></a>
+                        <a href="event.php<?php echo "?event_id=" . $event['id_event']; ?>"><img src="<?php echo $event['image']; ?>" alt="User Icon"></a>
+                        <a href="event.php<?php echo "?event_id=" . $event['id_event']; ?>"><p><?php echo $event['name']; ?></p></a>
                     </div>
 
                 <?php      
@@ -96,7 +98,7 @@
                             case 0:
                 ?>
                                 <div class="comboEvent">
-                                    <div id="<?php echo $events_type['name'] ?>" class="eventBox1" onclick="clickEvent('<?php echo $events_type['name']?>')">
+                                    <div id="<?php echo $events_type['name']; ?>" class="eventBox1" onclick="clickEvent('<?php echo $events_type['name']?>')">
                                     <?php
                                         echo $events_type['name'];
                                     ?>

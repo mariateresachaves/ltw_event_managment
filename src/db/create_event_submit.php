@@ -1,37 +1,29 @@
 <?php
     session_start();
     include_once('connection.php');
+
     $target_dir = "../imgs/".$_SESSION['login_user']."/".$_POST["event_name"]."/";
     $target_file = $target_dir.basename($_FILES["image"]["name"]);
-    $uploadOk = 1;
+
     $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
     // Check if image file is a actual image or fake image
 	
 	// Create a directory in the images directory with path "/username/event_name" where all the images relevant to the event will be stored
 	if (!file_exists("../imgs/".$_SESSION['login_user']."/".$_POST["event_name"]."/"))
-	{
 		mkdir("../imgs/".$_SESSION['login_user']."/".$_POST["event_name"]."/", 0755, true);
-	}
 	
     if(isset($_POST["submit"]))
     {
         $check = getimagesize($_FILES["image"]["tmp_name"]);
-        if($check !== false)
-			$uploadOk = 1;
+        if($check !== false) {
+            if (!(move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)))
+                echo "Sorry, there was an error uploading your file.";
+        }
+
         else
-			$uploadOk = 0;
+			echo "Sorry, your file was not uploaded.";
     }
   
-	if ($uploadOk == 0)
-    {
-        echo "Sorry, your file was not uploaded.";
-    }
-    else
-    {
-        if (!(move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)))
-            echo "Sorry, there was an error uploading your file.";
-    }
-	
 	// Insert the data obtained through POST method into the database regarding the event
     $null = NULL;
     $stmt = $db->prepare('INSERT INTO events (id_event, username, id_events_types, name, image, event_date, description) VALUES (:id_event, :username, :id_events_types, :name, :image, :event_date, :description)');
