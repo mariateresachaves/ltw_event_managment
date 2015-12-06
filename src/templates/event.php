@@ -41,8 +41,22 @@
         <link rel="stylesheet" href="../css/style7.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<meta property="og:url"           content="<?php echo "http://localhost/ltw_event_managment/src/templates/event.php?event_id=".$_GET["event_id"]?>" />
+		<meta property="og:type"          content="website" />
+		<meta property="og:title"         content="Event Management" />
+		<meta property="og:description"   content="<?php echo $event_selected['description'] ?>" />
+		<meta property="og:image"         content="<?php echo $event_selected['image'] ?>" />
 	</head> 
 	<body>
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/pt_PT/sdk.js#xfbml=1&version=v2.5";
+			fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+		</script>
 		<div id="menuBackground">
         </div>
         
@@ -106,6 +120,12 @@
                 <div id="event_date">
                     <?php echo $event_selected['event_date'];?>
                 </div>
+				<div class="fb-share-button" data-href=<?php echo "http://localhost/ltw_event_managment/src/templates/event.php?event_id=".$_GET['event_id']?> data-layout="button"></div>
+				<a href="<?php echo "mailto:?subject=I wanted you to check out this event&amp;body=Check out event "."http://localhost/ltw_event_managment/src/templates/event.php?event_id=".$_GET['event_id']."."; ?>" 
+				title="Share this event by email!">
+					<img src="http://png-2.findicons.com/files/icons/573/must_have/48/mail.png">
+				</a>
+            </div>
             </div>
             <div id="event_image">
                 <img src="<?php echo $event_selected['image'];?>">
