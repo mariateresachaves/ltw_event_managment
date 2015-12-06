@@ -31,7 +31,7 @@
   
 	// Insert the data obtained through POST method into the database regarding the event
     
-    $stmt = $db->prepare('INSERT INTO events (id_event, username, id_events_types, name, image, event_date, description) VALUES (:id_event, :username, :id_events_types, :name, :image, :event_date, :description)');
+    $stmt = $db->prepare('INSERT INTO events (id_event, username, id_events_types, name, image, event_date, description, visibility) VALUES (:id_event, :username, :id_events_types, :name, :image, :event_date, :description, :visibility)');
     $stmt->bindParam(':id_event', $null);
     $stmt->bindParam(':username', $_SESSION['login_user']);
     $stmt->bindParam(':id_events_types', $event_type);
