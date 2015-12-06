@@ -10,10 +10,14 @@
 
     $name = $_SESSION['name'];
     $username = $_SESSION['login_user'];
+
+    $stmt0 = $db->prepare("SELECT * FROM users WHERE username=?");
+	$stmt0->execute(array($username));
+	$user = $stmt0->fetch();
     
-    $stmt = $db->prepare("SELECT birthdate FROM users WHERE username=?");
-	$stmt->execute(array($username));
-	$birthdate = $stmt->fetch();
+    $stmt1 = $db->prepare("SELECT birthdate FROM users WHERE username=?");
+	$stmt1->execute(array($username));
+	$birthdate = $stmt1->fetch();
     
     $stmt2 = $db->prepare("SELECT COUNT (*) AS cnt FROM participations WHERE username=?");
     $stmt2->execute(array($username));
@@ -65,7 +69,7 @@
             
             <div id="leftContainer">
                 <div id="profileInformation">
-                    <img src="../imgs/Pinguim-DSC08880.JPG" alt="User Image">
+                    <img src="<?php echo $user['img'] ?>" alt="User Image">
                     <div id="profileInfoCont">
                         <p><?php echo $name?></p>
                         <p>going to <br> <?php echo $cnt_participations[0]?> events</p>
@@ -76,7 +80,7 @@
                         ?>
                         <p>member since <br> <?php echo $r_date?></p>
                         <form>
-                            <input type="submit" value="Edit Profile" id="editProfile">
+                            <input type="button" value="Edit Profile" id="editProfile" onclick="">
                         </form>
                     </div>
                 </div>

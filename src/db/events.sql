@@ -11,6 +11,7 @@ CREATE TABLE users (
 	gender VARCHAR,
     registdate DATETIME DEFAULT current_timestamp,
     token VARCHAR DEFAULT NULL,
+    img VARCHAR,
     PRIMARY KEY (username)
 );
 

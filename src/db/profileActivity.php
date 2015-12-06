@@ -5,8 +5,9 @@
 
     $username = $_SESSION['login_user'];
 
-    $stmt = $db->prepare("SELECT name, image, events.id_event FROM events, participations WHERE events.id_event=participations.id_event 
-                                                                                                AND participations.username=?");
+    $stmt = $db->prepare("SELECT name, image, events.id_event, events.description FROM events, participations 
+                                                    WHERE events.id_event=participations.id_event 
+                                                    AND participations.username=?");
 	$stmt->execute(array($username));
 	$user_events = $stmt->fetchAll();
 
