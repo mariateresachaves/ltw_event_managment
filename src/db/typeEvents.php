@@ -42,8 +42,9 @@
                                 
                                 <div id=\"rightFooter\">
                                     <div id=\"eventJoin\">
-                                        <form class=\"eventForm\" method=\"post\" onsubmit=\"return changeGoing('" . $event['id_event'] . ", " . $going . "')\">
-                                            <input type=\"submit\" name=\"going\" value=\"" . $going . "\" class=\"going\" id=\"" . $event['id_event'] . "\">
+                                        <form class=\"eventForm\" method=\"post\">
+                                            
+                                            <input type=\"button\" name=\"going\" value=\"" . $going . "\" class=\"going\" id=\"" . $event['id_event'] . "\">
                                         </form>
                                     </div>
 

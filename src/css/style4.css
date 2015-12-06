@@ -100,6 +100,10 @@ html, body {
     font-family: 'Lato';
 }
 
+#right > #search {
+    float: left;
+}
+
 #form1 > input[type=submit] {
     margin-left: -2px;
     border-style: none;
@@ -110,27 +114,19 @@ html, body {
     transform: translate(0, 5px);
 }
 
-#right > #search {
-    float: left;
-    width: 200px;
-}
-
 #right > #logout {
     float: right;
-    transform: translate(0, 7px);
+    transform: translate(0,7px);
+    margin-left: 20px;
 }
 
 #right > #logout > a {
     text-decoration: none;
     color: white;
-    font-family: 'Roboto';
-    font-size: 14px;
 }
 
 #right > #logout > a:hover {
     color: black;
-    font-family: 'Roboto';
-    font-size: 14px;
 }
 
 #userProfileBackground {
@@ -248,10 +244,12 @@ html, body {
 }
 
 #information {
-    display: block;
-    width: 520px;
-    height: 150px;
+    display: table;
+    width: auto;
+    height: auto;
     text-align: left;
+    background-color: #0e5d77;
+    transform: translate(150px,0);
 }
 
 #information > #informationLeft {
@@ -259,6 +257,7 @@ html, body {
     width: 150px;
     height: 150px;
     background-color: red;
+    display: table-row;
 }
 
 #information > #informationLeft > #informationImg > img{
@@ -272,10 +271,10 @@ html, body {
     margin-bottom: 50px;
     padding-left: 15px;
     width: 220px;
-    height: 150px;
     display: block;
     background-color: #0e5d77;
     word-wrap: break-word;
+    display: table-row;
 }
 
 #information > #informationRight > #rightFooter {

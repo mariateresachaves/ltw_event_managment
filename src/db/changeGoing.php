@@ -8,7 +8,7 @@
     $id_event = $_POST['id_event'];
     $going = $_POST['going'];
 
-    if($going == " Going") {
+    if($going == "Going") {
         $stmt = $db->prepare("INSERT INTO participations (username, id_event) VALUES (?, ?)");
         $stmt->execute(array($_SESSION['login_user'], $id_event));
         

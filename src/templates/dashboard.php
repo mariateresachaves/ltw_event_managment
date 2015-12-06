@@ -132,6 +132,39 @@
         </div>
     
         <script>
+            var j = jQuery.noConflict();
+            j(document).ready(function(){
+                
+                j(document).on("click", ".going", function(event){
+                    
+                    var id_event = "id_event=" + event.target.id;
+                    var status = "&going=" + event.target.value;
+                    var index2 = id_event + status;
+
+                        var status = $.ajax({
+                        type: "POST",
+                        url: "../db/changeGoing.php",
+                        cache: false,
+                        async: false,
+                        data: index2,
+                        dataType: "json",
+                        success: function(data) {
+                                    // data exists
+                                    if(data) {
+                                        document.getElementById(event.target.id).value=data[0];
+                                        document.getElementById("userEvents").innerHTML = data[1];
+                                    }
+                                    // data does not exists
+                                    else
+                                        alert("An error occurred");
+                                },
+                        error: function() {
+                                    alert("error");
+                                }
+                        });
+                });
+            });
+            
             function searchEvent() {
                 var name = document.getElementById("searchBar").value;
                 var index = "name=" + name;

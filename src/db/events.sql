@@ -79,8 +79,9 @@ END;
 CREATE TABLE comments (
     username VARCHAR,
     id_event INTEGER,
+    id_comment INTEGER,
     text TEXT,
-    PRIMARY KEY (username, id_event),
+    PRIMARY KEY (id_comment),
     FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (id_event) REFERENCES events(id_event) ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -105,3 +106,7 @@ CREATE TABLE comments (
 --                    alert("HEllo");
 --                });
 --            });
+
+-- id=\"" . $event['id_event'] . "\"
+
+-- onsubmit=\"return changeGoing('" . $event['id_event'] . ", " . $going . "')\"

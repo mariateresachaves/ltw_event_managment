@@ -11,7 +11,7 @@
     $name = $_SESSION['name'];
     $username = $_SESSION['login_user'];
 
-    $stmt = $db->prepare("SELECT name, image FROM events, participations WHERE events.id_event=participations.id_event 
+    $stmt = $db->prepare("SELECT name, image, events.id_event FROM events, participations WHERE events.id_event=participations.id_event 
                                                                                AND participations.username=?");
 	$stmt->execute(array($username));
 	$events = $stmt->fetchAll();
@@ -30,6 +30,8 @@
 	<head>
 		<title>Event</title>
         <link rel="stylesheet" href="../css/style7.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 	</head> 
 	<body>
 		<div id="menuBackground">
@@ -103,7 +105,7 @@
                 <?php echo $event_selected['description'];?>
             </div>
             <div id="event_type">
-                <?php echo $event_selected['eventName'];?>
+                <p>Type: <?php echo $event_selected['eventName'];?></p>
             </div>
             <div id="event_going">
                 
@@ -119,9 +121,62 @@
                 <?php      
                     }
                 ?>
-                
-                
+            </div>
+            <div id="add_comment">
+                <form>
+                    <input type="hidden" id="id_event" value="<?php echo $_GET['event_id'] ?>">
+                    <textarea placeholder="Insert here your comment" rows=4 cols=77 id="comment_description"></textarea>
+                    <input type="button" value="publish" id="publish">
+                </form>
             </div>
         </div>
+        
+        <script>
+        $("#add_comment").on("click", "#publish", function() {
+            var id_event = $("#id_event").val();
+            var comment = "comment=" + document.getElementById("comment_description").value;
+            var index = comment + "&id_event=" + id_event;
+            
+            var status = $.ajax({
+                type: "POST",
+                url: "../db/addComment.php",
+                cache: false,
+                async: false,
+                data: index,
+                dataType: "json",
+                success: function(data) {
+                            // data exists
+                            if(data) {
+                                document.getElementById("event_comments").innerHTML = data;
+                            }
+                            // data does not exists
+                            else
+                                alert("An error occurred");
+                        },
+                error: function() {
+                            alert("error");
+                        }
+            });
+            return false;
+        });
+            
+        $("textarea").keyup(function (e) {
+            autoheight(this);
+        });
+
+        function autoheight(a) {
+            if (!$(a).prop('scrollTop')) {
+                do {
+                    var b = $(a).prop('scrollHeight');
+                    var h = $(a).height();
+                    $(a).height(h-5);
+                }
+                while (b && (b != $(a).prop('scrollHeight')));
+            };
+            $(a).height($(a).prop('scrollHeight'));
+        }
+
+        autoheight($("textarea"));
+        </script>
 	</body>
 </html>
