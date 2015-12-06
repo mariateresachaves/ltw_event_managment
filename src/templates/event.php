@@ -24,6 +24,9 @@
         $going = "Not Going";
     else
         $going = "Going";
+	$stmt5 = $db->prepare("SELECT link FROM events_images WHERE id_event = ?");
+	$stmt5->execute(array($_GET['event_id']));
+	$image_links = $stmt5->fetch();
 ?>
 
 <!DOCTYPE html>
@@ -124,6 +127,12 @@
 				title="Share this event by email!">
 					<img src="http://png-2.findicons.com/files/icons/573/must_have/48/mail.png">
 				</a>
+			<div id="event_images">
+				<?php foreach($image_links as $image_link)
+				{
+					echo '<a href="'.$image_link.'">'.$image_link.'</a>';
+				}?>		
+			</div>	
             <div id="event_comments">
                 <hr>
                 <h2>Comments</h2>
