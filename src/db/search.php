@@ -6,7 +6,7 @@
 
     $name = $_GET['name'];
 
-    $stmt = $db->prepare("SELECT * FROM events WHERE name LIKE ? AND visibilty = 0");
+    $stmt = $db->prepare("SELECT * FROM events WHERE name LIKE ?");
 	$stmt->execute(array("%" . $name . "%"));
 	$events = $stmt->fetchAll();
 
@@ -27,13 +27,13 @@
         $information .= "<div id=\"information\">
                             <div id=\"informationLeft\">
                                 <div id=\"informationImg\">
-                                    <img src=\"" . $event['image'] . "\" alt=\"Event Image\">
+                                    <a href=\"event.php?event_id=" . $event['id_event'] . "\"><img src=\"" . $event['image'] . "\" alt=\"Event Image\"></a>
                                 </div>
                             </div>
                                 
                             <div id=\"informationRight\">
                                 <div id=\"informationName\">
-                                    <h3>" . $event['name'] . "</h3>
+                                    <a href=\"event.php?event_id=" . $event['id_event'] . "\"><h3>" . $event['name'] . "</h3></a>
                                 </div>
                                 
                                 <div id=\"informationDescription\">
