@@ -22,7 +22,7 @@
         foreach($events as $event){
             
             $user_events .= "<div id=\"event\">
-                                <a href=\"event.php\"><img src=\"../" . $event['image'] . "\" alt=\"User Icon\"></a>
+                                <a href=\"event.php\"><img src=\"" . $event['image'] . "\" alt=\"User Icon\"></a>
                                 <a href=\"event.php\"><p>" . $event['name'] . "</p></a>
                              </div>";
             
@@ -46,7 +46,7 @@
         foreach($events as $event){
             
             $user_events .= "<div id=\"event\">
-                                <a href=\"event.php\"><img src=\"../" . $event['image'] . "\" alt=\"User Icon\"></a>
+                                <a href=\"event.php\"><img src=\"" . $event['image'] . "\" alt=\"User Icon\"></a>
                                 <a href=\"event.php\"><p>" . $event['name'] . "</p></a>
                              </div>";
             
