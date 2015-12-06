@@ -1,5 +1,8 @@
 <?php
     include_once('connection.php');
+    include_once('niceFunctions.php');
+
+    session_start();
 
     $name = $_GET['name'];
 
@@ -7,13 +10,24 @@
 	$stmt->execute(array("%" . $name . "%"));
 	$events = $stmt->fetchAll();
 
+    $stmt2 = $db->prepare("SELECT id_event FROM participations WHERE participations.username=?");
+	$stmt2->execute(array($_SESSION['login_user']));
+	$user_participations = $stmt2->fetchAll();
+
     $information = "";
 
     foreach($events as $event) {
+        $found = searchSubArray($user_participations, 'id_event', $event['id_event']);
+        
+        if($found == true)
+            $going = "Not Going";
+        else
+            $going = "Going";
+        
         $information .= "<div id=\"information\">
                             <div id=\"informationLeft\">
                                 <div id=\"informationImg\">
-                                    <img src=\"../" . $event['image'] . "\" alt=\"Event Image\">
+                                    <img src=\"" . $event['image'] . "\" alt=\"Event Image\">
                                 </div>
                             </div>
                                 
@@ -28,8 +42,9 @@
                                 
                                 <div id=\"rightFooter\">
                                     <div id=\"eventJoin\">
-                                        <form>
-                                            <input type=\"submit\" name=\"going\" value=\"Going\" class=\"going\"/>
+                                        <form class=\"eventForm\" method=\"post\">
+                                            
+                                            <input type=\"button\" name=\"going\" value=\"" . $going . "\" class=\"going\" id=\"" . $event['id_event'] . "\">
                                         </form>
                                     </div>
 
