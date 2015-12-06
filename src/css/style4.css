@@ -256,14 +256,18 @@ html, body {
     float: left;
     width: 150px;
     height: 150px;
-    background-color: red;
     display: table-row;
 }
 
-#information > #informationLeft > #informationImg > img{
+#information > #informationLeft > #informationImg > a > img{
     width: 150px;
     height: 150px;
     background-color: white;
+}
+
+#information > #informationLeft > #informationImg > a {
+    text-decoration: none;
+    color: white;
 }
 
 #information > #informationRight {
@@ -275,6 +279,14 @@ html, body {
     background-color: #0e5d77;
     word-wrap: break-word;
     display: table-row;
+}
+
+#information > #informationRight > #informationName > a > h3 {
+    color: white;
+}
+
+#information > #informationRight > #informationName > a {
+    text-decoration: none;
 }
 
 #information > #informationRight > #rightFooter {

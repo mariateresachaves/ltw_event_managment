@@ -12,8 +12,9 @@
         $stmt = $db->prepare("INSERT INTO participations (username, id_event) VALUES (?, ?)");
         $stmt->execute(array($_SESSION['login_user'], $id_event));
         
-        $stmt2 = $db->prepare("SELECT name, image FROM events, participations WHERE events.id_event=participations.id_event 
-                                                                               AND participations.username=?");
+        $stmt2 = $db->prepare("SELECT name, image, events.id_event FROM events, participations
+                                                                                WHERE events.id_event=participations.id_event 
+                                                                                AND participations.username=?");
         $stmt2->execute(array($username));
         $events = $stmt2->fetchAll();
         
@@ -22,8 +23,8 @@
         foreach($events as $event){
             
             $user_events .= "<div id=\"event\">
-                                <a href=\"event.php\"><img src=\"" . $event['image'] . "\" alt=\"User Icon\"></a>
-                                <a href=\"event.php\"><p>" . $event['name'] . "</p></a>
+                                <a href=\"event.php?event_id=" . $event['id_event'] . "\"><img src=\"" . $event['image'] . "\" alt=\"User Icon\"></a>
+                                <a href=\"event.php?event_id=" . $event['id_event'] . "\"><p>" . $event['name'] . "</p></a>
                              </div>";
             
         }

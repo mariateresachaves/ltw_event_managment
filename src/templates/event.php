@@ -20,9 +20,18 @@
 	$stmt2->execute(array($_GET['event_id']));
 	$event_selected = $stmt2->fetch();
 
-    $stmt3 = $db->prepare("SELECT text FROM comments WHERE id_event=?");
+    $stmt3 = $db->prepare("SELECT text, username FROM comments WHERE id_event=?");
     $stmt3->execute(array($_GET['event_id']));
 	$event_comments = $stmt3->fetchAll();
+
+    $stmt4 = $db->prepare("SELECT id_event FROM participations WHERE participations.username=? AND id_event=?");
+	$stmt4->execute(array($_SESSION['login_user'], $_GET['event_id']));
+	$user_participations = $stmt4->fetch();
+
+    if(!empty($user_participations))
+        $going = "Not Going";
+    else
+        $going = "Going";
 ?>
 
 <!DOCTYPE html>
@@ -108,16 +117,27 @@
                 <p>Type: <?php echo $event_selected['eventName'];?></p>
             </div>
             <div id="event_going">
-                
+                    <form class="eventForm" method="post">
+
+                        <input type="button" name="going" value="<?php echo $going ?>" class="going" id="<?php echo $event_selected['id_event'] ?>">
+                    </form>
             </div>
             <div id="event_comments">
+                <hr>
+                <h2>Comments</h2>
                 <?php 
                     foreach ($event_comments as $comment) {
                 ?>
-                    <div id="comment">
-                        <?php echo $comment['text'];?>
-                    </div>
+                        <div id="comment">
+                            <div id="commentOwner">
+                                <?php echo $comment['username']?>
+                            </div>
 
+                            <div id="commentDescription">
+                                <p><?php echo $comment['text'];?> </p>
+                            </div>
+                        </div>
+                        <hr>
                 <?php      
                     }
                 ?>
@@ -132,6 +152,39 @@
         </div>
         
         <script>
+        var j = jQuery.noConflict();
+        j(document).ready(function(){
+
+            j(document).on("click", ".going", function(event){
+
+                var id_event = "id_event=" + event.target.id;
+                var status = "&going=" + event.target.value;
+                var index2 = id_event + status;
+
+                    var status = $.ajax({
+                    type: "POST",
+                    url: "../db/changeGoing.php",
+                    cache: false,
+                    async: false,
+                    data: index2,
+                    dataType: "json",
+                    success: function(data) {
+                                // data exists
+                                if(data) {
+                                    document.getElementById(event.target.id).value=data[0];
+                                    document.getElementById("userEvents").innerHTML = data[1];
+                                }
+                                // data does not exists
+                                else
+                                    alert("An error occurred");
+                            },
+                    error: function() {
+                                alert("error");
+                            }
+                    });
+            });
+        });
+            
         $("#add_comment").on("click", "#publish", function() {
             var id_event = $("#id_event").val();
             var comment = "comment=" + document.getElementById("comment_description").value;
@@ -147,6 +200,7 @@
                 success: function(data) {
                             // data exists
                             if(data) {
+                                document.getElementById("comment_description").value = "";
                                 document.getElementById("event_comments").innerHTML = data;
                             }
                             // data does not exists

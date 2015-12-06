@@ -17,6 +17,9 @@ html, body {
 	transform: translate(475px, 75px);
     position: absolute;
     text-align: left;
+    background-color: #0e5d77;
+    padding: 20px;
+    margin-top: 25px;
 }
 
 .container > h1 {
@@ -218,17 +221,23 @@ html, body {
 .container > #event_top {
     display: inline-block;
     width: 600px;
-
+    height: auto;
 }
 
 .container > #event_top > #event_date {
     margin-top: 25px;
     float: right;
     font-size: 14px;
+    margin: 0;
 }
 
 .container > #event_top > #event_name {
     float: left;
+}
+
+.container > #event_top > #event_name > h2 {
+    margin: 0;
+    margin-bottom: 15px;
 }
 
 .container > #event_image > img {
@@ -272,4 +281,66 @@ form > textarea {
     border: none;
     padding: 10px;
     resize: none;
+}
+
+.container > #event_going > .eventForm > .going {
+	background-color: white;
+    border-radius: 5px;
+    color: #00ccff;
+    font-size: 12px;
+    border: none;
+	display: block;
+	margin: 5px 0;
+	margin-top: 5px;
+	width: auto;
+    padding: 5px 10px;
+}
+
+.container > #event_going > .eventForm > .going:hover {
+    border: none;
+    color: white;
+    background: #a6a6a6;
+    box-shadow: 0px 0px 1px #777;
+    cursor: pointer;
+}
+
+.container > #event_comments > hr:first-child {
+    background-color: #00ccff;
+    height: 2px;
+    border: none;
+    opacity: 0.5;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.container > #event_comments {
+    margin-top: 50px;
+    word-wrap: break-word;
+}
+
+.container > #event_comments > #comment {
+    margin-bottom: 10px;
+    width: 600px;
+    word-wrap: break-word;
+}
+
+.container > #event_comments > hr {
+    background-color: #00ccff;
+    height: 1px;
+    border: none;
+    opacity: 0.3;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.container > #event_comments > #comment > #commentOwner {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.container > #event_comments > #comment > #commentDescription > p {
+    font-size: 14px;
+    word-wrap: break-word;
 }

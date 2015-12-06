@@ -13,12 +13,16 @@
     $information = "";
 
     foreach ($comments as $comment) {
-        $information .= "<div id=\"commentOwner\">
-                            " . $comment['username'] . "
-                        </div>
+        $information .= "
                         <div id=\"comment\">
-                            " . $comment['text'] . "
-                        </div>";
+                            <div id=\"commentOwner\">
+                                " . $comment['username'] . "
+                            </div>
+                            <div id=\"commentDescription\">
+                                " . $comment['text'] . "
+                            </div>
+                        </div>
+                        <hr>";
     }
 
     echo json_encode($information);
