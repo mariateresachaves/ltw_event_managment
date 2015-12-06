@@ -31,20 +31,34 @@ html, body {
 .container > #rightContainer {
     margin: 0;
     transform: translate(300px, 0);
-    background-color: #0e5d77;
-    width: 850px;
-    padding-bottom: 50px;
+}
+
+#rightContainerBackground {
+    width: 800px;
+    height: 200px;
+    position: fixed;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 0;
+    transform: translate(300px, 0);
 }
 
 .container > #rightContainer > #rightContainerMenu {
     margin: 0;
-    margin-right: 25px;
-    width: 850px;
+    margin-left: 25px;
     z-index: 1;
+    transform: translate(0, -5px);
     display: inline-block;
-    text-align: left;
-    background-color: #1585AB;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.28);
+}
+
+.container > #rightContainer > #rightContainerMenuBackground {
+    margin: 0;
+    width: 800px;
+    height: 50px;
+    position: fixed;
+    background-color: black;
+    opacity: 0.5;
+    z-index: -1;
 }
 
 .menu {
@@ -109,12 +123,9 @@ html, body {
     text-decoration: none;
 }
 
-#nameProfile > h1 {
+#nameProfile {
     margin: 0;
-    margin-top: 25px;
     margin-bottom: 20px;
-    width: auto;
-    text-align: left;
 }
 
 #profileInformation > img {
@@ -125,6 +136,15 @@ html, body {
     float: left;
 }
 
+#profileInformationBackground {
+    width: 200px;
+    height: 480px;
+    position: fixed;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 0;
+}
+
 #profileInformation {
     width: 200px;
     height: 480px;
@@ -132,7 +152,6 @@ html, body {
     z-index: 0;
     overflow-y: scroll;
     overflow-x: hidden;
-    background-color: #0e5d77;
 }
 
 #profileInfoCont {
@@ -171,79 +190,12 @@ html, body {
     cursor: pointer;
 }
 
-#rightContainer > #rightContainerMenu > #myEvents > h3 {
-    margin-left: 30px;
+#rightContainer > #rightContainerMenu > h3 {
+    margin-right: 50px;
 }
 
 #rightContainer > #rightContainerMenu > #comments, #rightContainer > #rightContainerMenu > #myEvents, #rightContainer > #rightContainerMenu > #activity {
     margin-right: 50px;
     display: inline-block;
     cursor: pointer;
-}
-
-#information {
-    margin-top: 15px;
-    display: table;
-    width: auto;
-    height: auto;
-    text-align: left;
-    background-color: #0e5d77;
-    transform: translate(150px,0);
-}
-
-#information > #informationLeft {
-    float: left;
-    width: 150px;
-    height: 150px;
-    display: table-row;
-}
-
-#information > #informationLeft > #informationImg > a > img{
-    width: 150px;
-    height: 150px;
-    background-color: white;
-}
-
-#information > #informationLeft > #informationImg > a {
-    text-decoration: none;
-    color: white;
-}
-
-#information > #informationRight {
-    float: left;
-    margin-bottom: 50px;
-    padding-left: 15px;
-    width: 500px;
-    display: block;
-    background-color: #0e5d77;
-    word-wrap: break-word;
-    display: table-row;
-}
-
-#information > #informationRight > #informationName > a > h3 {
-    color: white;
-}
-
-#information > #informationRight > #informationName > a {
-    text-decoration: none;
-}
-
-#information > #informationRight > #rightFooter {
-    margin-top: 15px;
-    margin-bottom: 2px;
-}
-
-#information > #informationRight > #rightFooter > #eventOwner {
-    float: right;
-    padding-right: 15px;
-    margin-top: 5px;
-}
-
-#information > #informationRight > #rightFooter > #eventOwner > p {
-    margin: 0;
-}
-
-#eventsInformation {
-    text-align: left;
-    transform: translate(-120px,10px);
 }
