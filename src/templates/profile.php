@@ -26,6 +26,10 @@
     $stmt3 = $db->prepare("SELECT registdate FROM users WHERE username=?");
     $stmt3->execute(array($username));
     $registdate = $stmt3->fetch();
+
+    $stmt4 = $db->prepare("SELECT * FROM events WHERE username=?");
+	$stmt4->execute(array($_SESSION['login_user']));
+	$user_events = $stmt4->fetchAll();
     
 ?>
 
@@ -46,22 +50,20 @@
                     <a href="dashboard.php"><img src="../imgs/icon.png"></a>
                 </div>
                 
-                <div id="title">
+                <header id="title">
                     <a href="dashboard.php"><h2>Event Management</h2></a>
-                </div>
+                <header>
             </div>
         </div>
         
 		<div class="container">
             <div id="topContainer">
-                <div id="nameProfile">
+                <header id="nameProfile">
                     <h1><?php echo $name?> Profile</h1>
-                </div>    
+                </header>    
             </div>
             
             <div id="leftContainer">
-                <div id="profileInformationBackground">
-                </div>
                 <div id="profileInformation">
                     <img src="../imgs/Pinguim-DSC08880.JPG" alt="User Image">
                     <div id="profileInfoCont">
@@ -80,15 +82,8 @@
                 </div>
             </div>
             
-            <div id="rightContainerBackground">
-            </div>
             <div id="rightContainer">
-                <div id="rightContainerMenuBackground">
-                </div>
                 <div id="rightContainerMenu">
-                    <div id="comments" onclick="clickComments()">
-                        <h3>Comments</h3>
-                    </div>
                     <div id="myEvents" onclick="clickMyEvents()">
                         <h3>My events</h3>
                     </div>
@@ -98,7 +93,29 @@
                 </div>
                 
                 <div id="eventsInformation">
-                    <h2> MANAGE YOUR EVENTS </h2>
+                    <?php foreach($user_events as $event) {
+                    ?>
+                        <div id="information">
+                            <div id="informationLeft">
+                                <div id="informationImg">
+                                    <a href="event.php?event_id=<?php echo $event['id_event'] ?>"><img src=" <?php echo $event['image'] ?>" alt="Event Image"></a>
+                                </div>
+                            </div>
+
+                            <div id="informationRight">
+                                <div id="informationName">
+                                    <a href="event.php?event_id=<?php echo $event['id_event'] ?>"><h3><?php echo $event['name'] ?></h3></a>
+                                </div>
+
+                                <div id="informationDescription">
+                                    <p> <?php echo $event['description'] ?></p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    <?php
+                    }
+                    ?>
                 </div>
 
                 <div id="createEvent">
@@ -108,30 +125,6 @@
         </div>
         
         <script>
-            function clickComments() {
-                var user_exists = $.ajax({
-                    type: "POST",
-                    url: "../db/profileComments.php",
-                    cache: false,
-                    async: false,
-                    data: "",
-                    dataType: "json",
-                    success: function(data) {
-                                // data exists
-                                if(data) {
-                                    document.getElementById("rightContainer").innerHTML=data;
-                                }
-                            
-                                // data does not exists
-                                else
-                                    alert("There are no events of that type.");
-                            },
-                    error: function() {
-                                alert("error");
-                            }
-                });
-            }
-            
             function clickMyEvents() {
                 var user_exists = $.ajax({
                     type: "POST",
@@ -143,12 +136,12 @@
                     success: function(data) {
                                 // data exists
                                 if(data) {
-                                    document.getElementById("rightContainer").innerHTML=data;
+                                    document.getElementById("eventsInformation").innerHTML=data;
                                 }
                             
                                 // data does not exists
                                 else
-                                    alert("There are no events of that type.");
+                                    alert("You have no events");
                             },
                     error: function() {
                                 alert("error");
